@@ -37,6 +37,10 @@ $query_warga = mysqli_query($koneksi, "SELECT id, nama, no_kk, rt, profesi FROM 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buat Surat Pengantar - RW 03 Sambi</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="map_favicon.png">
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -46,6 +50,10 @@ $query_warga = mysqli_query($koneksi, "SELECT id, nama, no_kk, rt, profesi FROM 
     <!-- Select2 CSS (Pencarian & Stylist Dropdown) -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
+    <!-- AOS Animation Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Icon Web -->
+    <link rel="icon" type="image/png" href="image/buatsurat_icon.png">
 
     <style>
         body {
@@ -58,6 +66,7 @@ $query_warga = mysqli_query($koneksi, "SELECT id, nama, no_kk, rt, profesi FROM 
             border: none;
             border-radius: 20px;
             background: #ffffff;
+            transition: all 0.3s ease;
         }
         .form-label {
             font-size: 0.825rem;
@@ -85,7 +94,8 @@ $query_warga = mysqli_query($koneksi, "SELECT id, nama, no_kk, rt, profesi FROM 
 <body class="d-flex align-items-center justify-content-center py-3 py-md-5">
 
 <div class="container px-3" style="max-width: 650px;">
-    <div class="card card-form shadow-lg p-3 p-sm-4 p-md-5">
+    <!-- Ditambahkan atribut data-aos untuk animasi Fade-In Up -->
+    <div class="card card-form shadow-lg p-3 p-sm-4 p-md-5" data-aos="fade-up" data-aos-duration="800">
         
         <!-- HEADER FORM RESPONSIF -->
         <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between mb-4 pb-3 border-bottom gap-2">
@@ -98,8 +108,8 @@ $query_warga = mysqli_query($koneksi, "SELECT id, nama, no_kk, rt, profesi FROM 
                 </span>
             </div>
             <div>
-                <a href="admin_dashboard.php" class="btn btn-outline-secondary btn-sm rounded-pill px-3 fw-semibold w-100 w-sm-auto mt-2 mt-sm-0">
-                    ← Dashboard
+                <a href="admin_dashboard.php" class="btn btn-outline-success btn-sm rounded-pill px-3 fw-semibold w-100 w-sm-auto mt-2 mt-sm-0 shadow-sm">
+                    <i class="fa-solid fa-arrow-left me-1"></i> Dashboard
                 </a>
             </div>
         </div>
@@ -146,7 +156,7 @@ $query_warga = mysqli_query($koneksi, "SELECT id, nama, no_kk, rt, profesi FROM 
 
             <!-- SUBMIT BUTTON -->
             <button type="submit" class="btn btn-success w-100 fw-bold rounded-pill py-2.5 shadow-sm">
-                <i class="fa-solid fa-print me-2"></i>Generate & Cetak Surat
+                <i class="fa-solid me-2"></i>Generate & Cetak Surat
             </button>
         </form>
     </div>
@@ -155,9 +165,16 @@ $query_warga = mysqli_query($koneksi, "SELECT id, nama, no_kk, rt, profesi FROM 
 <!-- JQUERY & SELECT2 JS -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <script>
     $(document).ready(function() {
+        // Inisialisasi Animasi AOS
+        AOS.init({
+            once: true // Animasi jalan 1 kali saja saat dimuat
+        });
+
         // Aktifkan Select2 dengan pencarian pada Dropdown Warga
         $('#wargaSelect').select2({
             theme: 'bootstrap-5',
@@ -169,7 +186,7 @@ $query_warga = mysqli_query($koneksi, "SELECT id, nama, no_kk, rt, profesi FROM 
         // Aktifkan Select2 tanpa kotak cari pada Dropdown Jenis Surat agar tampilannya rapi
         $('#jenisSuratSelect').select2({
             theme: 'bootstrap-5',
-            minimumResultsForSearch: Infinity, // Sembunyikan searchbar internal
+            minimumResultsForSearch: Infinity,
             width: '100%'
         });
 

@@ -65,6 +65,8 @@ while ($r_prof = mysqli_fetch_assoc($q_profesi)) {
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- html2pdf.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        <!-- Icon Web -->
+    <link rel="icon" type="image/png" href="image/statistik_icon.png">
     
     <style>
         body {

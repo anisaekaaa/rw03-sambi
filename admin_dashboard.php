@@ -86,6 +86,8 @@ if (!$q_warga) {
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- SweetAlert2 CSS & JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Icon Web -->
+    <link rel = "icon" type = "image/png" href = "image/admin_icon.png">
     
     <style>
         body {

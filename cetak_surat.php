@@ -37,6 +37,8 @@ $tgl_indo = date('d') . ' ' . $bulan_indo[(int)date('m')] . ' ' . date('Y');
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
     <!-- html2pdf JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- AOS Animation Library CSS -->
+    <link rel="icon" type="image/png" href="image/cetaksurat_icon.png">
     <style>
         * {
             box-sizing: border-box;

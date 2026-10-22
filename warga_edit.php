@@ -133,6 +133,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     <!-- TomSelect CSS (Dropdown Searchable) -->
     <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
+    <!-- Icon Web -->
+    <link rel="icon" type="image/png" href="image/editdata_icon.png">
 
     <style>
         body {

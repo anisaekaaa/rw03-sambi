@@ -72,6 +72,8 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+            <!-- Icon Web -->
+    <link rel="icon" type="image/png" href="image/datawarga_icon.png">
     
     <style>
         body {
