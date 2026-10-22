@@ -605,12 +605,12 @@ $tgl_sekarang = date('d') . ' ' . $bulan_indo[intval(date('n'))] . ' ' . date('Y
                 <h6 class="fw-bold mb-2 text-light small">Layanan Warga</h6>
                 <ul class="list-unstyled small d-flex flex-column gap-1 mb-0">
                     <li>
-                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20ingin%20mengajukan%20Surat%20Pengantar." target="_blank" class="text-secondary text-decoration-none">
+                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT []%20ingin%20mengajukan%20Surat%20Pengantar." target="_blank" class="text-secondary text-decoration-none">
                             <i class="fa-solid fa-file-lines me-1 text-warning"></i> Pengajuan Surat
                         </a>
                     </li>
                     <li>
-                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20ingin%20menyampaikan%20pengaduan." target="_blank" class="text-secondary text-decoration-none">
+                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT []%20ingin%20menyampaikan%20pengaduan." target="_blank" class="text-secondary text-decoration-none">
                             <i class="fa-solid fa-bullhorn me-1 text-warning"></i> Lapor / Pengaduan
                         </a>
                     </li>
@@ -627,7 +627,7 @@ $tgl_sekarang = date('d') . ' ' . $bulan_indo[intval(date('n'))] . ' ' . date('Y
                 <h6 class="fw-bold mb-2 text-light small">Kontak Darurat RW</h6>
                 <ul class="list-unstyled small d-flex flex-column gap-1 mb-0">
                     <li>
-                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20ingin..." target="_blank" class="text-secondary text-decoration-none">
+                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT []%20ingin..." target="_blank" class="text-secondary text-decoration-none">
                             <i class="fa-brands fa-whatsapp me-1 text-success"></i> Ketua RW 03
                         </a>
                     </li>

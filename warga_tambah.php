@@ -257,7 +257,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <option value="Mertua">Mertua</option>
                                     <option value="Orang Tua">Orang Tua</option>
                                     <option value="Famili Lain">Famili Lain</option>
-                                    <option value="Meninggal">Meninggal</option>
+                                    <option value="Kepala Keluarga (Meninggal)">Kepala Keluarga (Meninggal)</option>
+                                    <option value="Istri (Meninggal)">Istri (Meninggal)</option>
+                                    <option value="Anak (Meninggal)">Anak (Meninggal)</option>
                                 </select>
                             </div>
                             <div class="col-md-6">

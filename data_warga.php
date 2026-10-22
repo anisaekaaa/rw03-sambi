@@ -328,11 +328,11 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
                         <thead>
                             <tr>
                                 <th class="py-3 text-center" style="width: 50px;">No</th>
-                                <th class="py-3">Nama Lengkap</th>
-                                <th class="py-3">Status Keluarga</th>
+                                <th class="py-3 text-center">Nama Lengkap</th>
+                                <th class="py-3 text-center">Status Keluarga</th>
                                 <th class="py-3 text-center">L/P</th>
-                                <th class="py-3">Pendidikan</th>
-                                <th class="py-3">Profesi</th>
+                                <th class="py-3 text-center">Pendidikan</th>
+                                <th class="py-3 text-center">Profesi</th>
                                 <th class="py-3 text-center">Wilayah</th>
                             </tr>
                         </thead>
@@ -341,23 +341,50 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
                             $no = $offset + 1;
                             if (mysqli_num_rows($res_warga) > 0):
                                 while($row = mysqli_fetch_assoc($res_warga)): 
-                                    $is_kk = ($row['status_keluarga'] == 'Kepala Keluarga');
+                                    $st_keluarga = $row['status_keluarga'] ?? '';
+                                    $st_kawin    = $row['status_perkawinan'] ?? '';
+                                    $st_warga    = $row['status_warga'] ?? $row['status'] ?? '';
+
+                                    // Gabungkan untuk deteksi 'Meninggal'
+                                    $gabungan     = strtolower($st_keluarga . ' ' . $st_kawin . ' ' . $st_warga);
+                                    $is_meninggal = (strpos($gabungan, 'meninggal') !== false);
+                                    $is_kk        = (stripos($st_keluarga, 'kepala keluarga') !== false);
                             ?>
                             <tr class="<?= $is_kk ? 'table-light fw-semibold' : ''; ?>">
                                 <td class="text-center text-muted"><?= $no++; ?></td>
                                 <td class="text-dark">
                                     <?= htmlspecialchars($row['nama']); ?>
-                                    <?php if($is_kk): ?>
+                                    <?php if($is_kk && !$is_meninggal): ?>
                                         <span class="badge bg-success-subtle text-success ms-1" style="font-size: 10px;">KK</span>
                                     <?php endif; ?>
                                 </td>
-                                <td><span class="badge bg-light text-dark border"><?= htmlspecialchars($row['status_keluarga']); ?></span></td>
+                                
+                                <!-- BADGE STATUS KELUARGA BERWARNA -->
+                                <td class="text-center">
+                                    <?php if ($is_meninggal): ?>
+                                        <span class="badge bg-danger-subtle text-danger border border-danger fw-semibold rounded-pill px-2 py-1" style="font-size: 0.65rem;">
+                                            <?= htmlspecialchars($st_keluarga); ?>
+                                        </span>
+                                    <?php elseif ($is_kk): ?>
+                                        <span class="badge bg-success-subtle text-success border border-success fw-semibold rounded-pill px-2 py-1" style="font-size: 0.65rem;">
+                                            Kepala Keluarga
+                                        </span>
+                                    <?php else: ?>
+                                        <span class="badge bg-light text-dark border rounded-pill px-2 py-1" style="font-size: 0.65rem;">
+                                            <?= htmlspecialchars($st_keluarga); ?>
+                                        </span>
+                                    <?php endif; ?>
+                                </td>
+
+                                <!-- Tampilkan Jenis Kelamin dengan badge warna biru untuk Laki-laki dan merah untuk Perempuan -->
                                 <td class="text-center">
                                     <span class="badge <?= $row['jenis_kelamin'] == 'L' ? 'bg-primary-subtle text-primary' : 'bg-danger-subtle text-danger'; ?> rounded-pill px-2">
                                         <?= $row['jenis_kelamin']; ?>
                                     </span>
                                 </td>
-<td class="small text-secondary"><?= htmlspecialchars($row['pendidikan']); ?></td>
+
+                                <!-- Tampilkan Pendidikan & Profesi dengan htmlspecialchars untuk keamanan -->
+<td class="small text-secondary text-center"><?= htmlspecialchars($row['pendidikan']); ?></td>
 <td class="small text-secondary"><?= htmlspecialchars($row['profesi']); ?></td>
 <td class="text-center">
     <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25 rounded-pill px-3">
@@ -511,12 +538,12 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
                 <h6 class="fw-bold mb-2 text-light small">Layanan Warga</h6>
                 <ul class="list-unstyled small d-flex flex-column gap-1 mb-0">
                     <li>
-                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20ingin%20mengajukan%20Surat%20Pengantar." target="_blank" class="text-secondary text-decoration-none">
+                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT []%20ingin%20mengajukan%20Surat%20Pengantar." target="_blank" class="text-secondary text-decoration-none">
                             <i class="fa-solid fa-file-lines me-1 text-warning"></i> Pengajuan Surat
                         </a>
                     </li>
                     <li>
-                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20ingin%20menyampaikan%20pengaduan." target="_blank" class="text-secondary text-decoration-none">
+                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT []%20ingin%20menyampaikan%20pengaduan." target="_blank" class="text-secondary text-decoration-none">
                             <i class="fa-solid fa-bullhorn me-1 text-warning"></i> Lapor / Pengaduan
                         </a>
                     </li>
@@ -533,7 +560,7 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
                 <h6 class="fw-bold mb-2 text-light small">Kontak Darurat RW</h6>
                 <ul class="list-unstyled small d-flex flex-column gap-1 mb-0">
                     <li>
-                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20ingin..." target="_blank" class="text-secondary text-decoration-none">
+                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT []%20ingin..." target="_blank" class="text-secondary text-decoration-none">
                             <i class="fa-brands fa-whatsapp me-1 text-success"></i> Ketua RW 03
                         </a>
                     </li>
@@ -596,7 +623,7 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
                 <div class="d-flex flex-column gap-2">
                     
                     <!-- RT 01 -->
-                    <a href="https://wa.me/6281234567801?text=Halo%20Bapak%20Ketua%20RT%2001%20saya%20[nama lengkap]%20ingin..." target="_blank" 
+                    <a href="https://wa.me/6281234567801?text=Halo%20Bapak%20Ketua%20RT%2001%20saya%20[nama lengkap]%20dari%20ingin..." target="_blank" 
                        class="btn btn-white bg-white border rounded-3 p-2 text-start d-flex align-items-center justify-content-between shadow-sm hover-shadow">
                         <div class="d-flex align-items-center gap-2">
                             <span class="badge bg-success-subtle text-success fw-bold px-2 py-2 rounded-2">01</span>

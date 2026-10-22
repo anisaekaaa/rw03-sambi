@@ -166,11 +166,17 @@ if (!$q_warga) {
                 <span class="navbar-toggler-icon"></span>
             </button>
             
+            <!-- NAVBAR MENU ITEMS -->
             <div class="collapse navbar-collapse" id="adminNavbar">
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-2 pt-2 pt-lg-0">
                     <li class="nav-item">
+                        <a class="btn btn-warning btn-sm rounded-pill px-3 fw-bold btn-hover-effect shadow-sm text-dark" href="buat_surat.php">
+                            <i class="fa-solid me-1"></i> Buat Surat
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="btn btn-outline-light btn-sm rounded-pill px-3 fw-semibold btn-hover-effect" href="index.php" target="_blank">
-                            <i class="fa-solid fa-globe me-1"></i> Lihat Web Utama
+                            <i class="fa-solid me-1"></i> Lihat Web Utama
                         </a>
                     </li>
                     <li class="nav-item ms-lg-1">
@@ -198,12 +204,13 @@ if (!$q_warga) {
                     </p>
                 </div>
 
-                <div>
-                    <a href="warga_tambah.php" class="btn btn-success rounded-pill px-4 py-2 fw-bold shadow-sm btn-hover-effect d-inline-flex align-items-center gap-2">
-                        <i class="fa-solid fa-user-plus"></i>
-                        <span>Tambah Data Warga Baru</span>
-                    </a>
-                </div>
+                <!-- TOMBOL TAMBAH WARGA BARU -->
+<div>
+    <a href="warga_tambah.php" class="btn btn-success btn-sm rounded-pill px-3 py-1-5 fw-semibold shadow-sm d-inline-flex align-items-center gap-2" style="font-size: 0.82rem;">
+        <i class="fa-solid fa-user-plus"></i>
+        <span>Tambah Warga Baru</span>
+    </a>
+</div>
             </div>
 
             <!-- RINGKASAN KARTU ANGKA STATISTIK -->
@@ -255,17 +262,40 @@ if (!$q_warga) {
                     </div>
                 </div>
 
+<!-- DROPDOWN EXPORT DATA LEBIH RAPI & MENONJOL -->
+<div class="dropdown mb-3">
+    <button class="btn btn-success btn-sm dropdown-toggle fw-semibold shadow-sm px-2 py-1 small" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.8rem;">
+        <i class="bi bi-download me-1"></i> Export Data
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end shadow-sm border p-1 rounded-2" style="min-width: 155px; font-size: 0.78rem;">
+        <li>
+<a class="dropdown-item py-1 px-2 rounded text-success fw-medium d-flex align-items-center gap-1" href="export_excel.php?rt=<?= $admin_rt; ?>">
+    <i class="bi bi-file-earmark-excel"></i>
+    <span>Export Excel</span>
+</a>
+        </li>
+        <li><hr class="dropdown-divider my-1"></li>
+        <li>
+<a class="dropdown-item py-1 px-2 rounded text-danger fw-medium d-flex align-items-center gap-1" href="export_pdf.php?rt=<?= $admin_rt; ?>" target="_blank">
+                <i class="bi bi-file-earmark-pdf"></i>
+                <span>Cetak PDF</span>
+            </a>
+            </a>
+        </li>
+    </ul>
+</div>
+
 <div class="table-responsive">
     <table class="table table-custom align-middle mb-0" id="wargaTable">
         <thead>
             <tr>
                 <th class="text-center" style="width: 50px;">No</th>
-                <th>Nama Lengkap</th>
-                <th>Status Kel.</th>
+                <th class="text-center">Nama Lengkap</th>
+                <th class="text-center">Status Keluarga</th>
                 <th class="text-center">L/P</th>
-                <th>Tgl Lahir</th>
+                <th class="text-center">Tgl Lahir</th>
                 <th class="text-center">Usia</th>
-                <th>Pekerjaan</th>
+                <th class="text-center">Pekerjaan</th>
                 <th class="text-center">RT</th>
                 <th class="text-center" style="width: 130px;">Aksi</th>
             </tr>
@@ -291,35 +321,47 @@ if (!$q_warga) {
                     $jk        = isset($w['jenis_kelamin']) ? $w['jenis_kelamin'] : 'L';
                     $rt_val    = isset($w['rt']) ? $w['rt'] : 1;
 
-                    // Pengecekan status keberadaan / warga meninggal (fleksibel cek field status_warga / status)
-                    $st_warga  = strtolower($w['status_warga'] ?? $w['status'] ?? '');
-                    $is_meninggal = ($st_warga === 'meninggal');
+// Pengecekan status Meninggal gabungan dari SEMUA kolom (status_warga, status_perkawinan, status_keluarga)
+                    $gabungan_status = strtolower($w['status_warga'] ?? '') . ' ' . strtolower($status_p) . ' ' . strtolower($status_k);
+                    $is_meninggal    = (strpos($gabungan_status, 'meninggal') !== false);
             ?>
             <tr class="<?= $is_kk ? 'row-kepala-keluarga' : ''; ?>">
                 <td class="text-center fw-semibold text-secondary"><?= $no++; ?></td>
                 
-                <!-- KOLOM NAMA LENGKAP & KETERANGAN STATUS -->
+                <!-- KOLOM NAMA LENGKAP -->
                 <td>
                     <div class="fw-bold text-dark"><?= htmlspecialchars($w['nama']); ?></div>
-                    <div class="small text-muted d-flex align-items-center gap-1 mt-1">
+                    <div class="small text-muted mt-1">
                         <span><?= htmlspecialchars($status_p); ?></span>
-
-                        <?php if ($is_meninggal): ?>
-                            <!-- BADGE PENANDA MENINGGAL -->
-                            <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-1.5 py-0.5" style="font-size: 0.65rem;">
-                                <i class="bi bi-x-circle-fill me-1"></i>Meninggal
-                            </span>
-                        <?php endif; ?>
                     </div>
                 </td>
 
-                <td>
-                    <?php if ($is_kk): ?>
-                        <span class="badge bg-success-subtle text-success border border-success fw-semibold rounded-pill">Kepala Keluarga</span>
-                    <?php else: ?>
-                        <span class="badge bg-secondary-subtle text-secondary border border-secondary fw-normal rounded-pill"><?= htmlspecialchars($status_k); ?></span>
-                    <?php endif; ?>
-                </td>
+                <!-- KOLOM STATUS KELUARGA -->
+<td>
+    <?php if ($is_meninggal): ?> <!-- warna merah = meninggal-->
+        <span class="badge bg-danger-subtle text-danger border border-danger fw-semibold rounded-pill">
+            <?= htmlspecialchars($status_k); ?>
+        </span>
+    <?php elseif ($is_kk): ?> <!--warna hijau = kepala keluarga -->
+        <span class="badge bg-success-subtle text-success border border-success fw-semibold rounded-pill">
+            Kepala Keluarga
+        </span>
+    <?php elseif ($status_k === 'Istri'): ?> <!--warna merah muda = istri -->
+        <span class="badge bg-danger-subtle text-danger-emphasis border border-danger-subtle fw-semibold rounded-pill" style="background-color: #fce7f3 !important; color: #9d174d !important; border-color: #fbcfe8 !important;">
+            Istri
+        </span>
+    <?php elseif ($status_k === 'Anak'): ?> <!--warna biru muda = anak -->
+        <span class="badge bg-info-subtle text-info border border-info fw-semibold rounded-pill">
+            Anak
+        </span>
+    <?php else: ?> <!--warna abu-abu = status lain -->
+        <span class="badge bg-secondary-subtle text-secondary border border-secondary fw-normal rounded-pill">
+            <?= htmlspecialchars($status_k); ?>
+        </span>
+    <?php endif; ?>
+</td>
+
+                <!-- KOLOM JENIS KELAMIN -->
                 <td class="text-center">
                     <?php if ($jk == 'L'): ?>
                         <span class="badge bg-info-subtle text-info border border-info fw-bold">L</span>
