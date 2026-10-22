@@ -1,0 +1,260 @@
+﻿No;Nama;Status Hubungan Dalam Keluarga;Status Perkawinan;Jenis Kelamin;Tgl/Bln/;Usia;Pendidikan Terakhir Yang Ditamatkan;Pekerjaan;Ket;Profesi;RT;RW
+;;;;;TAhun Lahir;;;;;;;
+1;Dwi Wartono;Kepala Keluarga;Kawin;L;28/10/;41;SMA;Buruh Tetap;;Karyawan Swasta (Pabrik);1;3
+;;;;;1985;;;;;;;
+2;Sri Dayati;Suami/Istri;Kawin;P;13/05/;41;TIDAK;Petani;;Petani/Pekebun;1;3
+;;;;;1985;;TAMAT SD;;;;;
+3;Mesyfa Faizzatul Salsabila;Anak;Belum Kawin;P;19/07/;19;SD;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2007;;;Sekolah;;Mahasiswa;;
+4;Daliman Wiro Sudarmo;Kepala Keluarga;Kawin;L;01/07/;77;SMP;Buruh Tidak Tetap;;Lainnya;1;3
+;;;;;1949;;;;;;;
+5;Yamtinah;Suami/Istri;Kawin;P;02/02/;72;SD;Petani;;Petani/Pekebun;1;3
+;;;;;1955;;;;;;;
+6;Rumadi;Kepala Keluarga;Kawin;L;23/08/;50;SMP;Buruh Tidak Tetap;;Pekerja Bangunan;1;3
+;;;;;1976;;;;;;;
+7;Sarwitri;Suami/Istri;Kawin;P;13/12/;48;SMA;Petani;;Petani/Pekebun;1;3
+;;;;;1978;;;;;;;
+8;Sapti Wulandari;;;;02/09/;;;;Ganda;;1;3
+;;;;;2006;;;;;;;
+9;Ngatinah;Kepala Keluarga;Cerai Mati;P;07/12/;68;SD;Petani;;Petani/Pekebun;1;3
+;;;;;1958;;;;;;;
+10;Angga Geofanny;Kepala Keluarga;Kawin;L;04/05/;29;SMA;Wiraswasta;;Wiraswasta;1;3
+;;;;;1997;;;;;;;
+11;Mita Hestiqomah;Suami/Istri;Kawin;P;06/03/;27;SMA;Buruh Tidak Tetap;;Lainnya;1;3
+;;;;;2000;;;;;;;
+12;Felicia Zelmira Geofanny;Anak;Belum Kawin;P;26/01/;4;TIDAK ;Tidak Bekerja/;;Belum Bekerja;1;3
+;;;;;2023;;TAMAT SD;Sekolah;;;;
+13;Fathan Ahza Geofanny;Anak;Belum Kawin;L;11/06/;1;TIDAK ;Tidak Bekerja/;;Belum Bekerja;1;3
+;;;;;2025;;TAMAT SD;Sekolah;;;;
+14;Jiyem;;;;01/07/;;;;Meninggal;;1;3
+;;;;;1938;;;;;;;
+15;Tuti Yeni;;;;08/04/;;;;Meninggal;;1;3
+;;;;;1955;;;;;;;
+16;Suratman;Kepala Keluarga;Kawin;L;15/08/;59;SMP;Buruh ;;Pekerja Bangunan;1;3
+;;;;;1967;;;Tidak Tetap;;;;
+17;Samiyem;Suami/Istri;Kawin;P;25/06/;61;SMA;Petani;;Petani/Pekebun;1;3
+;;;;;1965;;;;;;;
+18;Galih Dwi Prasongko;Anak;Belum Kawin;L;01/01/;25;SMA;Tidak Bekerja/;;Belum Bekerja;1;3
+;;;;;2002;;;Sekolah;;;;
+19;Gigih Chairul Anam;Anak;Belum Kawin;L;05/03/;29;SMA;PNS/TNI/POLRI;;TNI;1;3
+;;;;;1998;;;;;;;
+20;Suryanto;Kepala Keluarga;Kawin;L;30/06/;56;SMA;Wiraswasta;;Wiraswasta;1;3
+;;;;;1970;;;;;;;
+21;Yuniah Rochmawati;Suami/Istri;Kawin;P;17/06/;52;SMA;Petani;;Petani/Pekebun;1;3
+;;;;;1974;;;;;;;
+22;Setya Budi Wicaksana;Kepala Keluarga;Kawin;L;21/09/;31;SMA;Wiraswasta;;Wiraswasta;1;3
+;;;;;1995;;;;;;;
+23;Windha Kumalasari;Suami/Istri;Kawin;P;18/11/;30;D1/D2/D3/;Wiraswasta;;Wiraswasta;1;3
+;;;;;1996;;S1/S2/S3;;;;;
+24;Clarissa Yasmin Adreena;Anak;Belum Kawin;P;16/03/;3;TIDAK ;Tidak Bekerja/;;Lainnya;1;3
+;;;;;2024;;TAMAT SD;Sekolah;;;;
+25;Sutrisno;Kepala Keluarga;Kawin;L;02/12/;54;SD;Petani;;Petani/Pekebun;1;3
+;;;;;1972;;;;;;;
+26;Irawati;Suami/Istri;Kawin;P;30/07/;54;TIDAK ;Petani;;Petani/Pekebun;1;3
+;;;;;1972;;TAMAT SD;;;;;
+27;Tiara Mustika;Anak;Belum Kawin;P;24/03/;26;SMA;Buruh Tetap;;Karyawan Swasta (Pabrik);1;3
+;;;;;2001;;;;;;;
+28;Trimo;Kepala Keluarga;Kawin;L;19/03/;70;SD;Wiraswasta;;Wiraswasta;1;3
+;;;;;1957;;;;;;;
+29;Jini;Suami/Istri;Kawin;P;15/03/;69;SD;Petani;;Petani/Pekebun;1;3
+;;;;;1958;;;;;;;
+30;Widodo;Anak;Belum Kawin;L;02/06/;39;SMP;Petani;;Petani/Pekebun;1;3
+;;;;;1987;;;;;;;
+31;Subiman;Kepala Keluarga;Kawin;L;28/10/;58;SMP;Wiraswasta;;Wiraswasta;1;3
+;;;;;1968;;;;;;;
+32;Anisya Nur Cahyani Dewi;Anak;Belum Kawin;P;28/12/;31;D1/D2/D3/;Wiraswasta;;Wiraswasta;1;3
+;;;;;1995;;S1/S2/S3;;;;;
+33;Bayu Purnomo Adi;Anak;Belum Kawin;L;21/07/;29;D1/D2/D3/;Wiraswasta;;Wiraswasta;1;3
+;;;;;1997;;S1/S2/S3;;;;;
+34;Sumini;Kepala Keluarga;Cerai Mati;P;01/07/;63;SD;Wiraswasta;;Wiraswasta;1;3
+;;;;;1963;;;;;;;
+35;Sugiyanto;Kepala Keluarga;Kawin;L;01/07/;77;SMP;Wiraswasta;;Wiraswasta;1;3
+;;;;;1949;;;;;;;
+36;Sri Mulyani;Suami/Istri;Kawin;P;15/11/;47;SMA;Petani;;Petani/Pekebun;1;3
+;;;;;1979;;;;;;;
+37;Yoga Pratama;Anak;Belum Kawin;L;04/02/;15;TIDAK ;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2012;;TAMAT SD;Sekolah;;Mahasiswa;;
+38;Harno;;;;26/10/;;;;Pindah;;1;3
+;;;;;1965;;;;;;;
+39;Slamet Mulyono;Kepala Keluarga;Kawin;L;09/10/;56;SD;Wiraswasta;;Wiraswasta;1;3
+;;;;;1970;;;;;;;
+40;Darsini;Suami/Istri;Kawin;P;01/07/;55;SD;Petani;;Petani/Pekebun;1;3
+;;;;;1971;;;;;;;
+41;Widodo Mulyo;Anak;Belum Kawin;L;04/05/;27;SMA;Tidak Bekerja/;;Belum Bekerja;1;3
+;;;;;1999;;;Sekolah;;;;
+42;Sarti;Kepala Keluarga;Cerai Mati;P;10/06/;69;SD;Petani;;Petani/Pekebun;1;3
+;;;;;1957;;;;;;;
+43;Sukasno;Kepala Keluarga;Kawin;L;09/08/;54;SMP;Buruh ;;Pekerja Bangunan;1;3
+;;;;;1972;;;Tidak Tetap;;;;
+44;Suratmi;Suami/Istri;Kawin;P;19/07/;47;SD;Petani;;Petani/Pekebun;1;3
+;;;;;1979;;;;;;;
+45;Aldi Rio Kustanto;Anak;Belum Kawin;L;03/07/;24;SMA;Tidak Bekerja/;;Belum Bekerja;1;3
+;;;;;2002;;;Sekolah;;;;
+46;Akbar Danu Ardiansyah;Anak;Belum Kawin;L;03/12/;19;SD;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2007;;;Sekolah;;Mahasiswa;;
+47;Ridha Putri Septiyani;Anak;Belum Kawin;P;14/09/;17;SD;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2009;;;Sekolah;;Mahasiswa;;
+48;Widi Daru Nugroho;Anak;Belum Kawin;L;25/01/;13;TIDAK ;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2014;;TAMAT SD;Sekolah;;Mahasiswa;;
+49;Widodo;Kepala Keluarga;Kawin;L;11/04/;42;SMP;Wiraswasta;;Wiraswasta;1;3
+;;;;;1985;;;;;;;
+50;Siti Maryati;Suami/Istri;Kawin;P;24/10/;52;SMP;Petani;;Petani/Pekebun;1;3
+;;;;;1974;;;;;;;
+51;Muryantoro;Kepala Keluarga;Belum Kawin;L;15/04/;52;SD;Petani;;Petani/Pekebun;1;3
+;;;;;1975;;;;;;;
+52;Purwadi;Familia lain;Belum Kawin;L;26/10/;39;SMA;Buruh ;ODGJ;Lainnya;1;3
+;;;;;1987;;;Tidak Tetap;;;;
+53;Aji Nugroho;Kepala Keluarga;Kawin;L;26/04/;42;SMP;Petani;;Petani/Pekebun;1;3
+;;;;;1985;;;;;;;
+54;Anin Na'imah;Suami/Istri;Kawin;P;02/11/;35;SMA;Petani;;Petani/Pekebun;1;3
+;;;;;1991;;;;;;;
+55;Khoirotun Hisan;Anak;Belum Kawin;P;08/02/;13;TIDAK ;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2014;;TAMAT SD;Sekolah;;Mahasiswa;;
+56;Zaid Al Hasan;Anak;Belum Kawin;L;03/05/;9;TIDAK ;Tidak Bekerja/;;Belum Bekerja;1;3
+;;;;;2017;;TAMAT SD;Sekolah;;;;
+57;Rosyiqul Abid Abdullah;Anak;Belum Kawin;L;10/07/;7;TIDAK ;Tidak Bekerja/;;Belum Bekerja;1;3
+;;;;;2019;;TAMAT SD;Sekolah;;;;
+58;Asiyah Jannatul Na'im;Anak;Belum Kawin;P;27/10/;3;TIDAK ;Tidak Bekerja/;;Belum Bekerja;1;3
+;;;;;2023;;TAMAT SD;Sekolah;;;;
+59;Zaenal Arifin;Kepala Keluarga;Kawin;L;28/10/;40;SD;Wiraswasta;;Wiraswasta;1;3
+;;;;;1986;;;;;;;
+60;Suprihatin;Suami/Istri;Kawin;P;09/07/;42;SMP;Wiraswasta;;Wiraswasta;1;3
+;;;;;1984;;;;;;;
+61;Adina Nasya Razeta;Anak;Belum Kawin;P;27/10/;6;TIDAK ;Tidak Bekerja/;;Belum Bekerja;1;3
+;;;;;2020;;TAMAT SD;Sekolah;;;;
+62;Fazri Khairor Arifin;Anak;Belum Kawin;L;02/01/;17;SD;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2010;;;Sekolah;;Mahasiswa;;
+63;Dalmi;;;;02/01/;;;;Meninggal;;1;3
+;;;;;1961;;;;;;;
+64;Anik Setyorini;Kepala Keluarga;Belum Kawin;P;27/08/;25;SMA;Buruh Tetap;;Karyawan Swasta (Pabrik);1;3
+;;;;;2001;;;;;;;
+65;Tukinar;;;;27/08/;;;;Meninggal;;1;3
+;;;;;2001;;;;;;;
+66;Sugiyarti;Kepala Keluarga;Belum Kawin;P;14/09/;57;SD;Petani;ODGJ;Belum Bekerja;1;3
+;;;;;1969;;;;;;;
+67;Pardiman;;;;13/01/;;;;Meninggal;;1;3
+;;;;;1949;;;;;;;
+68;Puput Hermawan;Kepala Keluarga;Kawin;L;23/03/;34;SMP;Buruh Tetap;;Karyawan Swasta (Pabrik);1;3
+;;;;;1993;;;;;;;
+69;Asna Zulaefa;Suami/Istri;Kawin;P;11/06/;31;SMA;Buruh Tetap;;Karyawan Swasta (Pabrik);1;3
+;;;;;1995;;;;;;;
+70;Adhitama Elvan Syahreza;Anak;Belum Kawin;L;15/09/;4;TIDAK ;Tidak Bekerja/;;Belum Bekerja;1;3
+;;;;;2022;;TAMAT SD;Sekolah;;;;
+71;Sujiyem;Kepala Keluarga;Cerai Mati;P;14/07/;64;TIDAK ;Petani;;Petani/Pekebun;1;3
+;;;;;1962;;TAMAT SD;;;;;
+72;Mhd. Syabri;Kepala Keluarga;Kawin;L;01/06/;46;SMA;Wiraswasta;;Wiraswasta;1;3
+;;;;;1980;;;;;;;
+73;Sukarsi;Suami/Istri;Kawin;P;27/10/;57;D1/D2/D3/;Wiraswasta;;Wiraswasta;1;3
+;;;;;1969;;S1/S2/S3;;;;;
+74;Titis Pambudi;Anak;Belum Kawin;L;21/11/;31;D1/D2/D3/;Petani;;Petani/Pekebun;1;3
+;;;;;1995;;S1/S2/S3;;;;;
+75;Wuri Daningtias Rakhmatin;Anak;Belum Kawin;P;26/01/;28;SMA;Petani;;Petani/Pekebun;1;3
+;;;;;1999;;;;;;;
+76;Dirgayusa Wijaya;Anak;Belum Kawin;L;25/07/;15;TIDAK ;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2011;;TAMAT SD;Sekolah;;Mahasiswa;;
+77;Marjono;Kepala Keluarga;Kawin;L;18/03/;67;SD;Wiraswasta;;Wiraswasta;1;3
+;;;;;1960;;;;;;;
+78;Siti Sunarni;Suami/Istri;Kawin;P;16/06/;61;SD;Petani;;Petani/Pekebun;1;3
+;;;;;1965;;;;;;;
+79;Semiarsih;;;;15/01/;;;;Meninggal;;1;3
+;;;;;1950;;;;;;;
+80;Ari Dwi Haryadi;Kepala Keluarga;Cerai Hidup;L;23/01/;39;SD;Petani;;Petani/Pekebun;1;3
+;;;;;1988;;;;;;;
+81;Muhammad Farid Ardiansyah;Anak;Belum Kawin;L;09/06/;17;SD;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2009;;;Sekolah;;Mahasiswa;;
+82;Wahyuhono;Kepala Keluarga;Kawin;L;02/02/;33;D1/D2/D3/;Buruh Tetap;;Karyawan Swasta (Pabrik);1;3
+;;;;;1994;;S1/S2/S3;;;;;
+83;Lia Arista;Suami/Istri;Kawin;P;24/04/;33;D1/D2/D3/;Wiraswasta;;Wiraswasta;1;3
+;;;;;1994;;S1/S2/S3;;;;;
+84;Casyakib Nabil Abidzar;Anak;Belum Kawin;L;07/07/;7;TIDAK ;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2019;;TAMAT SD;Sekolah;;Mahasiswa;;
+85;Aliyyah Nabila Zahra;Anak;Belum Kawin;L;02/04/;5;TIDAK ;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2022;;TAMAT SD;Sekolah;;Mahasiswa;;
+86;Wahyu Kuncoro;Kepala Keluarga;Kawin;L;07/07/;49;SD;Petani;;Petani/Pekebun;1;3
+;;;;;1977;;;;;;;
+87;Suwanti;Suami/Istri;Kawin;P;23/05/;44;SMP;Wiraswasta;;Pedagang Kaki Lima;1;3
+;;;;;1982;;;;;;;
+88;Septi Wulandari;Anak;Belum Kawin;P;02/03/;18;SD;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2009;;;Sekolah;;Mahasiswa;;
+89;Totok Haryanto;Kepala Keluarga;Cerai Hidup;L;28/06/;45;SMA;Buruh Tetap;;Karyawan Swasta (Pabrik);1;3
+;;;;;1981;;;;;;;
+90;Imaaroh Rifqiana Arsyada;Anak;Belum Kawin;P;22/04/;15;SD;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2011;;;Sekolah;;Mahasiswa;;
+91;Sri Sumarni;;;;08/02/;;;;Pindah;;1;3
+;;;;;1984;;;;;;;
+92;Abdul Aziz Al Farisi;;;;11/06/;;;;Pindah;;1;3
+;;;;;2007;;;;;;;
+93;Ashimah Zahida Dinillah;;;;07/02/;;;;Pindah;;1;3
+;;;;;2015;;;;;;;
+94;Muhammad;;;;19/07/;;;;Pindah;;1;3
+;;;;;2016;;;;;;;
+95;Suryono;Kepala Keluarga;Kawin;L;03/01/;56;SMA;PNS/TNI/POLRI;;POLRI;1;3
+;;;;;1971;;;;;;;
+96;Satrio Rahmat Hannowo;Anak;Belum Kawin;L;20/08/;16;SD;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2010;;;Sekolah;;Mahasiswa;;
+97;Saminem;Kepala Keluarga;Cerai Mati;P;01/07/;63;TIDAK ;Petani;;Petani/Pekebun;1;3
+;;;;;1963;;TAMAT SD;;;;;
+98;Sarno;Anak;Belum Kawin;L;23/05/;32;SMP;Petani;;Petani/Pekebun;1;3
+;;;;;1994;;;;;;;
+99;Dina Arisah;Anak;Belum Kawin;P;19/11/;27;SMA;Buruh Tetap;;Karyawan Swasta (Pabrik);1;3
+;;;;;1999;;;;;;;
+100;Suprapti;Kepala Keluarga;Cerai Hidup;P;22/09/;45;SMP;Petani;;Petani/Pekebun;1;3
+;;;;;1981;;;;;;;
+101;Yuniar Puspita Nugraheni;Anak;Belum Kawin;P;01/06/;20;SMP;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2006;;;Sekolah;;Mahasiswa;;
+102;Ngatinah;;;;30/12/;;;;Meninggal;Wiraswasta;1;3
+;;;;;1954;;;;;;;
+103;Yusman;Kepala Keluarga;Kawin;L;24/06/;30;SMA;Buruh Tetap;;Wiraswasta;1;3
+;;;;;1996;;;;;;;
+104;Dhea Ayu Pramesthie;Suami/Istri;Kawin;P;09/10/;28;D1/D2/D3/;Tidak Bekerja/;;Lainnya;1;3
+;;;;;1998;;S1/S2/S3;Sekolah;;;;
+105;Afika Azzahra;Anak;Belum Kawin;P;29/09/;3;TIDAK ;Tidak Bekerja/;;Belum Bekerja;1;3
+;;;;;2023;;TAMAT SD;Sekolah;;;;
+106;Egy Trisno Ariwibowo;;;;06/08/;;;;Pindah;Karyawan Swasta (Pabrik);1;3
+;;;;;1993;;;;;;;
+107;Isti Indah Damai Pratiwi;;;;11/04/;;;;Pindah;Karyawan Swasta (Pabrik);1;3
+;;;;;1993;;;;;;;
+108;Sara Mikaya Ayu Wibowo;;;;23/09/;;;;Pindah;Belum Bekerja;1;3
+;;;;;2019;;;;;;;
+109;Daliyem;;;;07/01/;;;;Meninggal;;1;3
+;;;;;1936;;;;;;;
+110;Kiki Prasadana Febrian Hadi;Kepala Keluarga;Kawin;L;03/02/;36;SMA;Wiraswasta;;Wiraswasta;1;3
+;;;;;1991;;;;;;;
+111;Joafresy Octaviani Surytanto;Suami/Istri;Kawin;P;19/10/;28;SMA;Wiraswasta;;Wiraswasta;1;3
+;;;;;1998;;;;;;;
+112;Rafisqy Danadyaksa Prasadana;Anak;Belum Kawin;L;13/10/;3;TIDAK ;Tidak Bekerja/;;Wiraswasta;1;3
+;;;;;2023;;TAMAT SD;Sekolah;;;;
+113;Musolini Sungkar;Kepala Keluarga;Kawin;L;23/01/;31;SMA;Buruh Tetap;;Karyawan Swasta (Pabrik);1;3
+;;;;;1996;;;;;;;
+114;Fiqih Latif Nur Affifah;Suami/Istri;Kawin;P;17/10/;29;D1/D2/D3/;Buruh Tetap;;Karyawan Swasta (Pabrik);1;3
+;;;;;1997;;S1/S2/S3;;;;;
+115;Althaf Orion Duta Sagara;Anak;Belum Kawin;L;07/07/;0;TIDAK ;Tidak Bekerja/;;Belum Bekerja;1;3
+;;;;;2026;;TAMAT SD;Sekolah;;;;
+116;Wiweko Wulang Widodo Spd;Kepala Keluarga;Kawin;L;07/06/;56;D1/D2/D3/;PNS/TNI/POLRI;;TNI;1;3
+;;;;;1970;;S1/S2/S3;;;;;
+117;Nurul Indri Hapsari;Suami/Istri;Kawin;P;04/04/;49;D1/D2/D3/;PNS/TNI/POLRI;;Belum Bekerja;1;3
+;;;;;1978;;S1/S2/S3;;;;;
+118;Fadlin Raksha Manggala;Anak;Belum Kawin;L;08/04/;14;TIDAK ;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2013;;TAMAT SD;Sekolah;;Mahasiswa;;
+119;Heni Priyanti;Kepala Keluarga;Cerai Mati;P;15/06/;45;SMA;Wiraswasta;;Wiraswasta;1;3
+;;;;;1981;;;;;;;
+120;Shilvia Rizki Puspita;Anak;Belum Kawin;P;21/10/;24;SMA;Buruh Tetap;;Pelajar/;1;3
+;;;;;2002;;;;;Mahasiswa;;
+121;Shellvira Windy Revalina;Anak;Belum Kawin;P;13/06/;22;SMA;Tidak Bekerja/;;Pelajar/;1;3
+;;;;;2004;;;Sekolah;;Mahasiswa;;
+122;Ilham Febriyanto;Kepala Keluarga;Kawin;L;19/02/;29;SMA;Buruh Tetap;;Karyawan Swasta (Pabrik);1;3
+;;;;;1998;;;;;;;
+123;Ayu Risky Wanda Ramadhanty;Suami/Istri;Kawin;P;22/01/;29;D1/D2/D3/;Buruh Tetap;;Pegawai Honorer;1;3
+;;;;;1998;;S1/S2/S3;;;;;
+124;Manggala Santosa Bimantara;Anak;Belum Kawin;L;29/05/;0;TIDAK ;Tidak Bekerja/;;Belum Bekerja;1;3
+;;;;;2026;;TAMAT SD;Sekolah;;;;
+125;Sartini;;;;03/03/;;;;Ganda;Pe;1;3
+;;;;;1963;;;;;;;
+126;Siswo Warsito;;;;18/04/;;;;Pindah;;1;3
+;;;;;1979;;;;;;;
+127;Supono Dijosumarto;;;;07/07/;;;;Ganda;;1;3
+;;;;;1953;;;;;;;
+128;Wahyu Rahamd Dullah;;;;22/03/;;;;Pindah;;1;3
+;;;;;1998;;;;;;;
+129;Wakiman;;;;12/06/;;;;Pindah;;1;3
+;;;;;1959;;;;;;;
