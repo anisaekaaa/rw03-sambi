@@ -177,16 +177,16 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 pt-2 pt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-white fw-semibold px-3" href="index.php"><i class="fa-solid me-1"></i> Beranda</a>
+                        <a class="nav-link text-white fw-semibold px-3" href="index.php"><i class="fa-solid me-1"></i>Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold px-3 rounded-pill bg-white bg-opacity-10" href="data_warga.php"><i class="fa-solid me-1"></i> Data Warga</a>
+                        <a class="nav-link active fw-bold px-3 rounded-pill bg-white bg-opacity-10" href="data_warga.php"><i class="fa-solid me-1"></i>Data Warga</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white fw-semibold px-3" href="statistik.php"><i class="fa-solid me-1"></i> Statistik</a>
+                        <a class="nav-link text-white fw-semibold px-3" href="statistik.php"><i class="fa-solid me-1"></i>Statistik</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fw-semibold" href="#kontak" data-bs-toggle="modal" data-bs-target="#modalKontak"><i class="fa-solid me-1 text-warning"></i> Kontak Pengurus</a>
+                        <a class="nav-link fw-semibold" href="#kontak" data-bs-toggle="modal" data-bs-target="#modalKontak"><i class="fa-solid me-1 text-warning"></i>Bantuan</a>
                     </li>
                     <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
                         <a href="login.php" class="btn btn-warning text-dark fw-bold px-3 btn-sm rounded-pill shadow-sm w-100 w-lg-auto btn-hover-effect">
@@ -354,12 +354,12 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
                             ?>
                             <tr class="<?= $is_kk ? 'table-light fw-semibold' : ''; ?>">
                                 <td class="text-center text-muted"><?= $no++; ?></td>
-                                <td class="text-dark">
-                                    <?= htmlspecialchars($row['nama']); ?>
-                                    <?php if($is_kk && !$is_meninggal): ?>
-                                        <span class="badge bg-success-subtle text-success ms-1" style="font-size: 10px;">KK</span>
-                                    <?php endif; ?>
-                                </td>
+<td class="text-dark" style="font-size: 0.85rem;">
+    <?= htmlspecialchars($row['nama']); ?>
+    <?php if($is_kk && !$is_meninggal): ?>
+        <span class="badge bg-success-subtle text-success ms-1" style="font-size: 9px;">KK</span>
+    <?php endif; ?>
+</td>
                                 
                                 <!-- BADGE STATUS KELUARGA BERWARNA -->
                                 <td class="text-center">
@@ -411,31 +411,45 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
                 </div>
             </div>
 
-            <!-- PAGINASI 20 DATA -->
-            <?php if ($total_pages > 1): ?>
-                <nav class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 mb-4" data-aos="fade-up">
-                    <span class="small text-muted">Halaman <b><?= $page; ?></b> dari <b><?= $total_pages; ?></b> (Total <?= $total_rows; ?> data)</span>
-                    <ul class="pagination pagination-sm mb-0">
-                        <li class="page-item <?= ($page <= 1) ? 'disabled' : ''; ?>">
-                            <a class="page-link rounded-start-pill" href="data_warga.php?keyword=<?= urlencode($keyword); ?>&rt=<?= $filter_rt; ?>&kategori=<?= $filter_kategori; ?>&page=<?= $page - 1; ?>#tabel-warga">Prev</a>
-                        </li>
+<!-- PAGINASI CLEAN & RESPONSIF (HP: CENTER, LAPTOP: LEFT-RIGHT) -->
+<?php if ($total_pages > 1): ?>
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 mb-4 mt-3" data-aos="fade-up">
+        <!-- Teks Informasi (Kiri di Laptop, Tengah di HP) -->
+        <span class="text-secondary small text-center text-md-start">
+            Menampilkan Halaman <b class="text-dark"><?= $page; ?></b> dari <b class="text-dark"><?= $total_pages; ?></b> <span class="text-muted">(Total <?= $total_rows; ?> Data)</span>
+        </span>
+        
+        <!-- Tombol Navigasi Paginasi (Kanan di Laptop, Tengah di HP) -->
+        <ul class="pagination pagination-sm mb-0">
+            <!-- Tombol Prev -->
+            <li class="page-item <?= ($page <= 1) ? 'disabled' : ''; ?>">
+                <a class="page-link border bg-white text-secondary rounded-pill-start px-3 py-1 shadow-sm" href="data_warga.php?keyword=<?= urlencode($keyword); ?>&rt=<?= $filter_rt; ?>&kategori=<?= $filter_kategori; ?>&page=<?= $page - 1; ?>#tabel-warga" style="font-size: 0.8rem;">
+                    <i class="fa-solid fa-chevron-left me-1" style="font-size: 0.7rem;"></i> Kembali
+                </a>
+            </li>
 
-                        <?php 
-                        $start_p = max(1, $page - 1);
-                        $end_p   = min($total_pages, $page + 1);
-                        for($p = $start_p; $p <= $end_p; $p++): 
-                        ?>
-                            <li class="page-item <?= ($p == $page) ? 'active' : ''; ?>">
-                                <a class="page-link" href="data_warga.php?keyword=<?= urlencode($keyword); ?>&rt=<?= $filter_rt; ?>&kategori=<?= $filter_kategori; ?>&page=<?= $p; ?>#tabel-warga"><?= $p; ?></a>
-                            </li>
-                        <?php endfor; ?>
+            <!-- Angka Halaman -->
+            <?php 
+            $start_p = max(1, $page - 1);
+            $end_p   = min($total_pages, $page + 1);
+            for($p = $start_p; $p <= $end_p; $p++): 
+            ?>
+                <li class="page-item <?= ($p == $page) ? 'active' : ''; ?>">
+                    <a class="page-link border <?= ($p == $page) ? 'bg-success border-success text-white fw-bold' : 'bg-white text-secondary'; ?> px-2-5 py-1 shadow-sm" href="data_warga.php?keyword=<?= urlencode($keyword); ?>&rt=<?= $filter_rt; ?>&kategori=<?= $filter_kategori; ?>&page=<?= $p; ?>#tabel-warga" style="font-size: 0.8rem; min-width: 32px; text-align: center;">
+                        <?= $p; ?>
+                    </a>
+                </li>
+            <?php endfor; ?>
 
-                        <li class="page-item <?= ($page >= $total_pages) ? 'disabled' : ''; ?>">
-                            <a class="page-link rounded-end-pill" href="data_warga.php?keyword=<?= urlencode($keyword); ?>&rt=<?= $filter_rt; ?>&kategori=<?= $filter_kategori; ?>&page=<?= $page + 1; ?>#tabel-warga">Next</a>
-                        </li>
-                    </ul>
-                </nav>
-            <?php endif; ?>
+            <!-- Tombol Next -->
+            <li class="page-item <?= ($page >= $total_pages) ? 'disabled' : ''; ?>">
+                <a class="page-link border bg-white text-secondary rounded-pill-end px-3 py-1 shadow-sm" href="data_warga.php?keyword=<?= urlencode($keyword); ?>&rt=<?= $filter_rt; ?>&kategori=<?= $filter_kategori; ?>&page=<?= $page + 1; ?>#tabel-warga" style="font-size: 0.8rem;">
+                    Lanjut <i class="fa-solid fa-chevron-right ms-1" style="font-size: 0.7rem;"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+<?php endif; ?>
 
         </div>
     </main>
@@ -452,29 +466,27 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
                         <i class="fa-solid fa-comments"></i>
                     </div>
                     <div>
-                        <h6 class="modal-title fw-bold mb-0" id="modalKontakLabel">Kontak & Pelayanan</h6>
-                        <small class="text-white-50" style="font-size: 0.75rem;">Pengurus RW 03 Sambi</small>
+                        <h6 class="modal-title fw-bold mb-0" id="modalKontakLabel">Layanan Web RW</h6>
+                        <small class="text-white-50" style="font-size: 0.75rem;">Pengelola Portal RW 03 Sambi</small>
                     </div>
                 </div>
                 <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <!-- BODY MODAL -->
-            <div class="modal-body p-3 bg-light">
-                <p class="text-muted mb-2" style="font-size: 0.75rem;">Silakan hubungi pengurus RW 03 Sambi untuk pelayanan kependudukan:</p>
-                
+            <div class="modal-body p-3 bg-light"> 
                 <div class="d-flex flex-column gap-2">
                     
                     <!-- 1. HOTLINE WHATSAPP -->
-                    <a href="https://wa.me/6288239587567?text=Halo%20Pengurus%20RW%2003%20Sambi,%20saya%20ingin%20bertanya..." target="_blank" class="text-decoration-none">
+                    <a href="https://wa.me/6288239587567?text=Assalamu'alaikum%20Admin%20RW%2003%20Sambi,%20saya%20ingin%20bertanya..." target="_blank" class="text-decoration-none">
                         <div class="p-2 bg-white rounded-3 shadow-sm border border-success border-opacity-20 d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center gap-2">
                                 <div class="bg-success bg-opacity-10 text-success p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 34px; height: 34px;">
                                     <i class="fa-brands fa-whatsapp"></i>
                                 </div>
                                 <div>
-                                    <div class="fw-bold text-dark small" style="font-size: 0.8rem;">Hotline WA RW 03</div>
-                                    <small class="text-muted d-block" style="font-size: 0.7rem;">Pelayanan Umum & Admin</small>
+                                    <div class="fw-bold text-dark small" style="font-size: 0.8rem;">Admin Sistem</div>
+                                    <small class="text-muted d-block" style="font-size: 0.7rem;">Bantuan Teknis dan Informasi</small>
                                 </div>
                             </div>
                             <i class="fa-solid fa-chevron-right text-muted" style="font-size: 0.75rem;"></i>
@@ -540,18 +552,13 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
                 <h6 class="fw-bold mb-2 text-light small">Layanan Warga</h6>
                 <ul class="list-unstyled small d-flex flex-column gap-1 mb-0">
                     <li>
-                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT []%20ingin%20mengajukan%20Surat%20Pengantar." target="_blank" class="text-secondary text-decoration-none">
+                        <a href="https://wa.me/6281228620442?text=Assalamu'alaikum%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT [ ]%20ingin%20mengajukan%20Surat%20Pengantar." target="_blank" class="text-secondary text-decoration-none">
                             <i class="fa-solid fa-file-lines me-1 text-warning"></i> Pengajuan Surat
                         </a>
                     </li>
                     <li>
-                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT []%20ingin%20menyampaikan%20pengaduan." target="_blank" class="text-secondary text-decoration-none">
+                        <a href="https://wa.me/6281228620442?text=Assalamu'alaikum%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT [ ]%20ingin%20menyampaikan%20pengaduan." target="_blank" class="text-secondary text-decoration-none">
                             <i class="fa-solid fa-bullhorn me-1 text-warning"></i> Lapor / Pengaduan
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalPanduan" class="text-secondary text-decoration-none">
-                            <i class="fa-solid fa-circle-info me-1 text-warning"></i> Panduan Web
                         </a>
                     </li>
                 </ul>
@@ -559,10 +566,10 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
 
             <!-- Kolom 3: Kontak Darurat (Bisa Langsung Ditekan dari HP) -->
             <div class="col-6 col-md-4">
-                <h6 class="fw-bold mb-2 text-light small">Kontak Darurat RW</h6>
+                <h6 class="fw-bold mb-2 text-light small">Kontak RT / RW dan Kontak Darurat</h6>
                 <ul class="list-unstyled small d-flex flex-column gap-1 mb-0">
                     <li>
-                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT []%20ingin..." target="_blank" class="text-secondary text-decoration-none">
+                        <a href="https://wa.me/6281228620442?text=Assalamu'alaikum%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT [ ]%20ingin..." target="_blank" class="text-secondary text-decoration-none">
                             <i class="fa-brands fa-whatsapp me-1 text-success"></i> Ketua RW 03
                         </a>
                     </li>
@@ -588,25 +595,6 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
     </div>
 </footer>
 
-<!-- MODAL POP-UP PANDUAN (Nggak perlu file PHP baru) -->
-<div class="modal fade" id="modalPanduan" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content text-dark">
-            <div class="modal-header bg-warning text-dark">
-                <h6 class="modal-title fw-bold"><i class="fa-solid fa-book me-2"></i>Panduan Sistem Informasi RW 03</h6>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body small">
-                <ol class="ps-3 mb-0">
-                    <li class="mb-2"><strong>Data Warga:</strong> Gunakan menu navigasi atas untuk melihat daftar warga terdaftar.</li>
-                    <li class="mb-2"><strong>Layanan Surat & Pengaduan:</strong> Klik menu di footer untuk langsung terhubung via WhatsApp Pengurus RW.</li>
-                    <li><strong>Pengurus RW:</strong> Silakan klik menu <em>Login Pengurus</em> untuk masuk ke Dashboard Admin.</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- MODAL POP-UP KONTAK KETUA RT (MURNI BOOTSTRAP 5) -->
 <div class="modal fade" id="modalKontakRT" tabindex="-1" aria-labelledby="modalKontakRTLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered"> <!-- modal-sm bikin ukurannya kecil & pas -->
@@ -625,7 +613,7 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
                 <div class="d-flex flex-column gap-2">
                     
                     <!-- RT 01 -->
-                    <a href="https://wa.me/6281234567801?text=Halo%20Bapak%20Ketua%20RT%2001%20saya%20[nama lengkap]%20dari%20ingin..." target="_blank" 
+                    <a href="https://wa.me/6281234567801?text=Assalamu'alaikum%20Bapak%20Ketua%20RT%2001%20saya%20[nama lengkap]%20dari%20ingin..." target="_blank" 
                        class="btn btn-white bg-white border rounded-3 p-2 text-start d-flex align-items-center justify-content-between shadow-sm hover-shadow">
                         <div class="d-flex align-items-center gap-2">
                             <span class="badge bg-success-subtle text-success fw-bold px-2 py-2 rounded-2">01</span>
@@ -638,7 +626,7 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
                     </a>
 
                     <!-- RT 02 -->
-                    <a href="https://wa.me/6281234567802?text=Halo%20Bapak%20Ketua%20RT%2002%20saya%20[nama lengkap]%20ingin..." target="_blank" 
+                    <a href="https://wa.me/6281234567802?text=Assalamu'alaikum%20Bapak%20Ketua%20RT%2002%20saya%20[nama lengkap]%20ingin..." target="_blank" 
                        class="btn btn-white bg-white border rounded-3 p-2 text-start d-flex align-items-center justify-content-between shadow-sm">
                         <div class="d-flex align-items-center gap-2">
                             <span class="badge bg-success-subtle text-success fw-bold px-2 py-2 rounded-2">02</span>
@@ -651,7 +639,7 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
                     </a>
 
                     <!-- RT 03 -->
-                    <a href="https://wa.me/6281234567803?text=Halo%20Bapak%20Ketua%20RT%2003%20saya%20[nama lengkap]%20ingin..." target="_blank" 
+                    <a href="https://wa.me/6281234567803?text=Assalamu'alaikum%20Bapak%20Ketua%20RT%2003%20saya%20[nama lengkap]%20ingin..." target="_blank" 
                        class="btn btn-white bg-white border rounded-3 p-2 text-start d-flex align-items-center justify-content-between shadow-sm">
                         <div class="d-flex align-items-center gap-2">
                             <span class="badge bg-success-subtle text-success fw-bold px-2 py-2 rounded-2">03</span>
@@ -664,7 +652,7 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
                     </a>
 
                     <!-- RT 04 -->
-                    <a href="https://wa.me/6281234567804?text=Halo%20Bapak%20Ketua%20RT%2004%20saya%20[nama lengkap]%20ingin..." target="_blank" 
+                    <a href="https://wa.me/6281234567804?text=Assalamu'alaikum%20Bapak%20Ketua%20RT%2004%20saya%20[nama lengkap]%20ingin..." target="_blank" 
                        class="btn btn-white bg-white border rounded-3 p-2 text-start d-flex align-items-center justify-content-between shadow-sm">
                         <div class="d-flex align-items-center gap-2">
                             <span class="badge bg-success-subtle text-success fw-bold px-2 py-2 rounded-2">04</span>
@@ -677,7 +665,7 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
                     </a>
 
                     <!-- RT 05 -->
-                    <a href="https://wa.me/6281234567805?text=Halo%20Bapak%20Ketua%20RT%2005%20saya%20[nama lengkap]%20ingin..." target="_blank" 
+                    <a href="https://wa.me/6281234567805?text=Assalamu'alaikum%20Bapak%20Ketua%20RT%2005%20saya%20[nama lengkap]%20ingin..." target="_blank" 
                        class="btn btn-white bg-white border rounded-3 p-2 text-start d-flex align-items-center justify-content-between shadow-sm">
                         <div class="d-flex align-items-center gap-2">
                             <span class="badge bg-success-subtle text-success fw-bold px-2 py-2 rounded-2">05</span>
@@ -690,7 +678,7 @@ $rt_total_perempuan = mysqli_fetch_assoc($q_rt_perempuan)['total'];
                     </a>
 
                     <!-- RT 06 -->
-                    <a href="https://wa.me/6281234567806?text=Halo%20Bapak%20Ketua%20RT%2006%20saya%20[nama lengkap]%20ingin..." target="_blank" 
+                    <a href="https://wa.me/6281234567806?text=Assalamu'alaikum%20Bapak%20Ketua%20RT%2006%20saya%20[nama lengkap]%20ingin..." target="_blank" 
                        class="btn btn-white bg-white border rounded-3 p-2 text-start d-flex align-items-center justify-content-between shadow-sm">
                         <div class="d-flex align-items-center gap-2">
                             <span class="badge bg-success-subtle text-success fw-bold px-2 py-2 rounded-2">06</span>

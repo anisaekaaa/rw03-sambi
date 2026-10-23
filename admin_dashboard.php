@@ -286,136 +286,169 @@ if (!$q_warga) {
                     </ul>
                 </div>
 
-                <div class="table-responsive">
-                    <table class="table table-custom align-middle mb-0" id="wargaTable">
-                        <thead>
-                            <tr>
-                                <th class="text-center" style="width: 50px;">No</th>
-                                <th class="text-center">Nama Lengkap</th>
-                                <th class="text-center">Status Keluarga</th>
-                                <th class="text-center">L/P</th>
-                                <th class="text-center">Tgl Lahir</th>
-                                <th class="text-center">Usia</th>
-                                <th class="text-center">Pekerjaan</th>
-                                <th class="text-center">RT</th>
-                                <th class="text-center" style="width: 130px;">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php 
-                            if ($q_warga && mysqli_num_rows($q_warga) > 0):
-                                $no = 1;
-                                while ($w = mysqli_fetch_assoc($q_warga)):
-                                    // Deteksi nama kolom tgl lahir (tgl_lahir / tanggal_lahir)
-                                    $tgl_val   = !empty($w['tgl_lahir']) ? $w['tgl_lahir'] : (!empty($w['tanggal_lahir']) ? $w['tanggal_lahir'] : '');
-                                    $tgl_lahir = !empty($tgl_val) ? htmlspecialchars($tgl_val) : '-';
-                                    
-                                    $status_k  = isset($w['status_keluarga']) ? $w['status_keluarga'] : '';
-                                    $is_kk     = ($status_k == 'Kepala Keluarga');
-                                    $status_p  = isset($w['status_perkawinan']) ? $w['status_perkawinan'] : '';
-                                    $jk        = isset($w['jenis_kelamin']) ? $w['jenis_kelamin'] : 'L';
-                                    $rt_val    = isset($w['rt']) ? $w['rt'] : 1;
+<div class="table-responsive">
+    <table class="table table-sm table-custom align-middle mb-0" id="wargaTable" style="font-size: 0.78rem;">
+        <thead>
+            <tr class="text-secondary border-bottom">
+                <th class="text-center py-2" style="width: 30px;">No</th>
+                <th class="py-2">Nama Lengkap</th>
+                <th class="text-center py-2">Status Keluarga</th>
+                <th class="text-center py-2" style="width: 35px;">L/P</th>
+                <th class="text-center py-2 d-none d-lg-table-cell">Tgl Lahir</th>
+                <th class="text-center py-2">Usia</th>
+                <th class="py-2 d-none d-md-table-cell">Pekerjaan</th>
+                <th class="text-center py-2">RT</th>
+                <th class="text-center py-2">Keterangan</th>
+                <th class="text-center py-2" style="width: 100px;">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+<?php 
+if ($q_warga && mysqli_num_rows($q_warga) > 0):
+    $no = 1;
+    while ($w = mysqli_fetch_assoc($q_warga)):
+        $tgl_val   = !empty($w['tgl_lahir']) ? $w['tgl_lahir'] : (!empty($w['tanggal_lahir']) ? $w['tanggal_lahir'] : '');
+        $tgl_lahir = !empty($tgl_val) ? htmlspecialchars($tgl_val) : '-';
+        
+        $status_k  = isset($w['status_keluarga']) ? $w['status_keluarga'] : '';
+        $is_kk     = ($status_k == 'Kepala Keluarga');
+        $status_p  = isset($w['status_perkawinan']) ? $w['status_perkawinan'] : '';
+        $jk        = isset($w['jenis_kelamin']) ? $w['jenis_kelamin'] : 'L';
+        $rt_val    = isset($w['rt']) ? $w['rt'] : 1;
 
-                                    // Pengecekan status Meninggal gabungan dari SEMUA kolom
-                                    $gabungan_status = strtolower($w['status_warga'] ?? '') . ' ' . strtolower($status_p) . ' ' . strtolower($status_k);
-                                    $is_meninggal    = (strpos($gabungan_status, 'meninggal') !== false);
+        $gabungan_status = strtolower($w['status_warga'] ?? '') . ' ' . strtolower($status_p) . ' ' . strtolower($status_k);
+        $is_meninggal    = (strpos($gabungan_status, 'meninggal') !== false);
 
-                                    // AMAN KAN KALKULASI USIA OTOMATIS
-                                    if ($is_meninggal) {
-                                        $usia_tampil = isset($w['usia']) ? $w['usia'] . ' th' : '-';
-                                    } else {
-                                        if (!empty($tgl_val) && $tgl_val != '0000-00-00') {
-                                            try {
-                                                $birthDate   = new DateTime($tgl_val);
-                                                $today       = new DateTime('today');
-                                                $usia_tampil = $today->diff($birthDate)->y . ' th';
-                                            } catch (Exception $e) {
-                                                $usia_tampil = isset($w['usia']) ? $w['usia'] . ' th' : '-';
-                                            }
-                                        } else {
-                                            $usia_tampil = isset($w['usia']) ? $w['usia'] . ' th' : '-';
-                                        }
-                                    }
-                                    
-                                    // Deteksi pekerjaan / profesi
-                                    $pek_val   = isset($w['pekerjaan']) && !empty($w['pekerjaan']) ? $w['pekerjaan'] : (isset($w['profesi']) ? $w['profesi'] : '');
-                                    $pekerjaan = !empty($pek_val) ? htmlspecialchars($pek_val) : '-';
-                            ?>
-                            <tr class="<?= $is_kk ? 'row-kepala-keluarga' : ''; ?>">
-                                <td class="text-center fw-semibold text-secondary"><?= $no++; ?></td>
-                                
-                                <!-- KOLOM NAMA LENGKAP -->
-                                <td>
-                                    <div class="fw-bold text-dark"><?= htmlspecialchars($w['nama']); ?></div>
-                                    <div class="small text-muted mt-1">
-                                        <span><?= htmlspecialchars($status_p); ?></span>
-                                    </div>
-                                </td>
+        if ($is_meninggal) {
+            $usia_tampil = isset($w['usia']) ? $w['usia'] . ' th' : '-';
+        } else {
+            if (!empty($tgl_val) && $tgl_val != '0000-00-00') {
+                try {
+                    $birthDate   = new DateTime($tgl_val);
+                    $today       = new DateTime('today');
+                    $usia_tampil = $today->diff($birthDate)->y . ' th';
+                } catch (Exception $e) {
+                    $usia_tampil = isset($w['usia']) ? $w['usia'] . ' th' : '-';
+                }
+            } else {
+                $usia_tampil = isset($w['usia']) ? $w['usia'] . ' th' : '-';
+            }
+        }
+        
+        $pek_val   = isset($w['pekerjaan']) && !empty($w['pekerjaan']) ? $w['pekerjaan'] : (isset($w['profesi']) ? $w['profesi'] : '');
+        $pekerjaan = !empty($pek_val) ? htmlspecialchars($pek_val) : '-';
 
-                                <!-- KOLOM STATUS KELUARGA -->
-                                <td>
-                                    <?php if ($is_meninggal): ?>
-                                        <span class="badge bg-danger-subtle text-danger border border-danger fw-semibold rounded-pill">
-                                            <?= htmlspecialchars($status_k); ?>
-                                        </span>
-                                    <?php elseif ($is_kk): ?>
-                                        <span class="badge bg-success-subtle text-success border border-success fw-semibold rounded-pill">
-                                            Kepala Keluarga
-                                        </span>
-                                    <?php elseif ($status_k === 'Istri'): ?>
-                                        <span class="badge bg-danger-subtle text-danger-emphasis border border-danger-subtle fw-semibold rounded-pill" style="background-color: #fce7f3 !important; color: #9d174d !important; border-color: #fbcfe8 !important;">
-                                            Istri
-                                        </span>
-                                    <?php elseif ($status_k === 'Anak'): ?>
-                                        <span class="badge bg-info-subtle text-info border border-info fw-semibold rounded-pill">
-                                            Anak
-                                        </span>
-                                    <?php else: ?>
-                                        <span class="badge bg-secondary-subtle text-secondary border border-secondary fw-normal rounded-pill">
-                                            <?= htmlspecialchars($status_k); ?>
-                                        </span>
-                                    <?php endif; ?>
-                                </td>
+        // AMBIL KETERANGAN & BERSIHKAN TEKS
+        $ket_raw   = trim($w['keterangan'] ?? $w['ket'] ?? '');
+        $ket_clean = htmlspecialchars($ket_raw);
 
-                                <!-- KOLOM JENIS KELAMIN -->
-                                <td class="text-center">
-                                    <?php if ($jk == 'L'): ?>
-                                        <span class="badge bg-info-subtle text-info border border-info fw-bold">L</span>
-                                    <?php else: ?>
-                                        <span class="badge bg-danger-subtle text-danger border border-danger fw-bold">P</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td><?= $tgl_lahir; ?></td>
-                                <td class="text-center fw-medium text-nowrap"><?= $usia_tampil; ?></td>
-                                <td><?= $pekerjaan; ?></td>
-                                <td class="text-center">
-                                    <span class="badge bg-success-subtle text-success border border-success fw-bold">RT 0<?= $rt_val; ?></span>
-                                </td>
-                                <td class="text-center">
-                                    <div class="d-flex justify-content-center align-items-center gap-1">
-                                        <a href="warga_edit.php?id=<?= $w['id']; ?>" class="btn btn-warning btn-sm fw-bold px-2 py-1 text-nowrap rounded-2 btn-hover-effect">
-                                            Edit
-                                        </a>
-                                        <button type="button" class="btn btn-danger btn-sm fw-bold px-2 py-1 text-nowrap rounded-2 btn-hover-effect" onclick="konfirmasiHapus(<?= $w['id']; ?>, '<?= htmlspecialchars(addslashes($w['nama'])); ?>')">
-                                            Hapus
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <?php 
-                                endwhile;
-                            else:
-                            ?>
-                            <tr>
-                                <td colspan="9" class="text-center py-4 text-muted">
-                                    <i class="fa-solid fa-folder-open fa-2x mb-2 d-block opacity-50"></i>
-                                    Belum ada data warga terdaftar untuk wilayah ini.
-                                </td>
-                            </tr>
-                            <?php endif; ?>
-                        </tbody>
-                    </table>
-                </div>
+        if (stripos($ket_raw, 'meninggal') !== false) {
+            $ket_tampil = 'Meninggal';
+        } else {
+            $ket_tampil = $ket_clean;
+        }
+?>
+<tr class="<?= $is_kk ? 'row-kepala-keluarga' : ''; ?>">
+    <td class="text-center text-muted py-1"><?= $no++; ?></td>
+    
+<!-- NAMA LENGKAP -->
+<td class="py-1">
+    <div class="text-dark text-nowrap" style="font-weight: <?= $is_kk ? '700' : '500'; ?>; font-size: 0.8rem;">
+        <?= htmlspecialchars($w['nama']); ?>
+    </div>
+    <div class="text-muted d-none d-sm-block" style="font-size: 0.65rem;"><?= htmlspecialchars($status_p); ?></div>
+</td>
+
+<!-- STATUS KELUARGA --->
+<td class="text-center py-1 text-nowrap">
+    <?php if ($is_kk): ?>
+        <span class="badge bg-success-subtle text-success border border-success fw-semibold rounded-pill px-2" style="font-size: 0.6rem;">
+            Kepala Keluarga
+        </span>
+    <?php elseif ($status_k === 'Istri'): ?>
+        <span class="badge rounded-pill px-2" style="font-size: 0.6rem; background-color: #fce7f3; color: #9d174d; border: 1px solid #fbcfe8;">
+            Istri
+        </span>
+    <?php elseif ($status_k === 'Anak'): ?>
+        <span class="badge bg-info-subtle text-info border border-info fw-semibold rounded-pill px-2" style="font-size: 0.6rem;">
+            Anak
+        </span>
+    <?php else: ?>
+        <span class="badge bg-secondary-subtle text-secondary border rounded-pill px-2" style="font-size: 0.6rem;">
+            <?= htmlspecialchars($status_k); ?>
+        </span>
+    <?php endif; ?>
+</td>
+
+    <!-- L/P -->
+    <td class="text-center py-1">
+        <span class="badge <?= $jk == 'L' ? 'bg-info-subtle text-info border-info' : 'bg-danger-subtle text-danger border-danger'; ?> border fw-bold px-1" style="font-size: 0.6rem;"><?= $jk; ?></span>
+    </td>
+
+    <!-- TGL LAHIR (PERSIS SAMA DENGAN HEADER: d-none d-lg-table-cell) -->
+    <td class="text-center text-nowrap py-1 d-none d-lg-table-cell" style="font-size: 0.725rem;"><?= $tgl_lahir; ?></td>
+    
+    <!-- USIA -->
+    <td class="text-center text-nowrap py-1" style="font-size: 0.725rem;"><?= $usia_tampil; ?></td>
+    
+    <!-- PEKERJAAN (PERSIS SAMA DENGAN HEADER: d-none d-md-table-cell) -->
+    <td class="text-truncate py-1 d-none d-md-table-cell" style="max-width: 110px; font-size: 0.725rem;"><?= $pekerjaan; ?></td>
+    
+    <!-- RT -->
+    <td class="text-center py-1">
+        <span class="badge bg-success-subtle text-success border border-success fw-bold px-1-5" style="font-size: 0.6rem;">RT 0<?= $rt_val; ?></span>
+    </td>
+
+<!-- KOLOM KETERANGAN (WARNA SOFT ELEGAN, TIDAK BENTROK SAMA TOMBOL AKSI) -->
+<td class="text-center py-1 text-nowrap">
+    <?php if (!empty($ket_raw) && $ket_raw !== '-'): ?>
+        <?php if (stripos($ket_raw, 'meninggal') !== false): ?>
+            <!-- Warna Muted/Dark Soft (Elegan & Formal) -->
+            <span class="badge bg-secondary-subtle text-dark border border-secondary-subtle rounded-pill px-2" style="font-size: 0.6rem; font-weight: 500;">
+                Meninggal
+            </span>
+        <?php elseif (stripos($ket_raw, 'pindah') !== false): ?>
+            <!-- Warna Slate/Abu-Abu Netral -->
+            <span class="badge bg-light text-secondary border rounded-pill px-2" style="font-size: 0.6rem; font-weight: 500;">
+                <?= $ket_tampil; ?>
+            </span>
+        <?php else: ?>
+            <!-- Status Lainnya (Default Netral) -->
+            <span class="badge bg-light text-dark border rounded-pill px-2" style="font-size: 0.6rem; font-weight: 500;">
+                <?= $ket_tampil; ?>
+            </span>
+        <?php endif; ?>
+    <?php else: ?>
+        <span class="text-muted" style="font-size: 0.7rem;">-</span>
+    <?php endif; ?>
+</td>
+
+    <!-- AKSI -->
+    <td class="text-center py-1">
+        <div class="d-flex justify-content-center align-items-center gap-1">
+            <a href="warga_edit.php?id=<?= $w['id']; ?>" class="btn btn-warning btn-sm fw-bold px-1-5 py-0 rounded-2" style="font-size: 0.68rem;">
+                Edit
+            </a>
+            <button type="button" class="btn btn-danger btn-sm fw-bold px-1-5 py-0 rounded-2" style="font-size: 0.68rem;" onclick="konfirmasiHapus(<?= $w['id']; ?>, '<?= htmlspecialchars(addslashes($w['nama'])); ?>')">
+                Hapus
+            </button>
+        </div>
+    </td>
+</tr>
+<?php 
+    endwhile;
+else:
+?>
+<tr>
+    <td colspan="10" class="text-center py-4 text-muted">
+        <i class="fa-solid fa-folder-open fa-2x mb-2 d-block opacity-50"></i>
+        Belum ada data warga terdaftar untuk wilayah ini.
+    </td>
+</tr>
+<?php endif; ?>
+        </tbody>
+    </table>
+</div>
             </div>
 
         </div>

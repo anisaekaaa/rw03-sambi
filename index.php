@@ -131,16 +131,16 @@ $total_perempuan = mysqli_fetch_assoc($q_perempuan)['total'];
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 pt-2 pt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold px-3 rounded-pill bg-white bg-opacity-10" href="index.php"><i class="fa-solid me-1"></i> Beranda</a>
+                        <a class="nav-link active fw-bold px-3 rounded-pill bg-white bg-opacity-10" href="index.php"><i class="fa-solid me-1"></i>Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white fw-semibold px-3" href="data_warga.php"><i class="fa-solid me-1"></i> Data Warga</a>
+                        <a class="nav-link text-white fw-semibold px-3" href="data_warga.php"><i class="fa-solid me-1"></i>Data Warga</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white fw-semibold px-3" href="statistik.php"><i class="fa-solid me-1"></i> Statistik</a>
+                        <a class="nav-link text-white fw-semibold px-3" href="statistik.php"><i class="fa-solid me-1"></i>Statistik</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fw-semibold" href="#kontak" data-bs-toggle="modal" data-bs-target="#modalKontak"><i class="fa-solid me-1 text-warning"></i> Kontak Pengurus</a>
+                        <a class="nav-link fw-semibold" href="#kontak" data-bs-toggle="modal" data-bs-target="#modalKontak"><i class="fa-solid me-1 text-warning"></i>Bantuan</a>
                     </li>
                     <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
                         <a href="login.php" class="btn btn-warning text-dark fw-bold px-3 btn-sm rounded-pill shadow-sm w-100 w-lg-auto btn-hover-effect">
@@ -152,7 +152,7 @@ $total_perempuan = mysqli_fetch_assoc($q_perempuan)['total'];
         </div>
     </nav>
 
-    <!-- HERO BANNER BERANIMASI -->
+<!-- HERO BANNER BERANIMASI (2 TOMBOL) -->
     <section class="hero-section text-center">
         <div class="container px-3" data-aos="fade-up" data-aos-duration="1000">
             <div class="d-inline-flex align-items-center gap-2 bg-white bg-opacity-10 text-white fw-bold px-3 py-2 rounded-pill mb-3 border border-white border-opacity-25 shadow-sm" style="font-size: 0.85rem;">
@@ -163,13 +163,17 @@ $total_perempuan = mysqli_fetch_assoc($q_perempuan)['total'];
                 Desa Sambi, Kecamatan Sambi, Kabupaten Boyolali, Jawa Tengah.
             </p>
             
+            <!-- 2 TOMBOL UTAMA -->
             <div class="d-flex flex-wrap justify-content-center gap-3">
+                <!-- 1. Eksplorasi Data Warga (Utama) -->
                 <a href="data_warga.php" class="btn btn-warning fw-bold px-4 py-2 text-dark rounded-pill shadow btn-hover-effect">
-                    <i class="fa-solid fa-magnifying-glass me-2"></i>Eksplorasi Data Warga
+                    <i class="fa-solid me-2"></i>Eksplorasi Data Warga
                 </a>
-                <a href="statistik.php" class="btn btn-outline-light fw-semibold px-4 py-2 rounded-pill btn-hover-effect">
-                    Lihat Ringkasan
-                </a>
+
+                <!-- 2. Panduan Web -->
+                <button type="button" class="btn btn-outline-light fw-semibold px-4 py-2 rounded-pill btn-hover-effect" data-bs-toggle="modal" data-bs-target="#modalPanduan">
+                    <i class="fa-solid me-1 text-warning"></i> Panduan Penggunaan Web
+                </button>
             </div>
         </div>
     </section>
@@ -271,8 +275,8 @@ $total_perempuan = mysqli_fetch_assoc($q_perempuan)['total'];
                         <i class="fa-solid fa-comments"></i>
                     </div>
                     <div>
-                        <h6 class="modal-title fw-bold mb-0" id="modalKontakLabel">Kontak & Pelayanan</h6>
-                        <small class="text-white-50" style="font-size: 0.75rem;">Pengurus RW 03 Sambi</small>
+                        <h6 class="modal-title fw-bold mb-0" id="modalKontakLabel">Layanan Web RW</h6>
+                        <small class="text-white-50" style="font-size: 0.75rem;">Pengelola Portal RW 03 Sambi</small>
                     </div>
                 </div>
                 <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -280,20 +284,18 @@ $total_perempuan = mysqli_fetch_assoc($q_perempuan)['total'];
 
             <!-- BODY MODAL -->
             <div class="modal-body p-3 bg-light">
-                <p class="text-muted mb-2" style="font-size: 0.75rem;">Silakan hubungi pengurus RW 03 Sambi untuk pelayanan kependudukan:</p>
-                
                 <div class="d-flex flex-column gap-2">
                     
                     <!-- 1. HOTLINE WHATSAPP -->
-                    <a href="https://wa.me/6288239587567?text=Halo%20Pengurus%20RW%2003%20Sambi,%20saya%20ingin%20bertanya..." target="_blank" class="text-decoration-none">
+                    <a href="https://wa.me/6288239587567?text=Assalamu'alaikum%20Admin%20RW%2003%20Sambi,%20saya%20ingin%20bertanya..." target="_blank" class="text-decoration-none">
                         <div class="p-2 bg-white rounded-3 shadow-sm border border-success border-opacity-20 d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center gap-2">
                                 <div class="bg-success bg-opacity-10 text-success p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 34px; height: 34px;">
                                     <i class="fa-brands fa-whatsapp"></i>
                                 </div>
                                 <div>
-                                    <div class="fw-bold text-dark small" style="font-size: 0.8rem;">Hotline WA RW 03</div>
-                                    <small class="text-muted d-block" style="font-size: 0.7rem;">Pelayanan Umum & Admin</small>
+                                    <div class="fw-bold text-dark small" style="font-size: 0.8rem;">Admin Sistem</div>
+                                    <small class="text-muted d-block" style="font-size: 0.7rem;">Bantuan Teknis dan Informasi</small>
                                 </div>
                             </div>
                             <i class="fa-solid fa-chevron-right text-muted" style="font-size: 0.75rem;"></i>
@@ -309,7 +311,7 @@ $total_perempuan = mysqli_fetch_assoc($q_perempuan)['total'];
                                 </div>
                                 <div>
                                     <div class="fw-bold text-dark d-flex align-items-center gap-1" style="font-size: 0.8rem;">
-                                        <span>Sekretariat RW 03</span>
+                                        <span>RW 03</span>
                                         <span class="badge bg-primary-subtle text-primary border border-primary text-uppercase" style="font-size:0.6rem; padding: 2px 4px;">Maps</span>
                                     </div>
                                     <small class="text-muted d-block" style="font-size: 0.7rem;">Desa Sambi, Boyolali</small>
@@ -359,18 +361,13 @@ $total_perempuan = mysqli_fetch_assoc($q_perempuan)['total'];
                 <h6 class="fw-bold mb-2 text-light small">Layanan Warga</h6>
                 <ul class="list-unstyled small d-flex flex-column gap-1 mb-0">
                     <li>
-                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT []%20ingin%20mengajukan%20Surat%20Pengantar." target="_blank" class="text-secondary text-decoration-none">
+                        <a href="https://wa.me/6281228620442?text=Assalamu'alaikum%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT [ ]%20ingin%20mengajukan%20Surat%20Pengantar." target="_blank" class="text-secondary text-decoration-none">
                             <i class="fa-solid fa-file-lines me-1 text-warning"></i> Pengajuan Surat
                         </a>
                     </li>
                     <li>
-                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT []%20ingin%20menyampaikan%20pengaduan." target="_blank" class="text-secondary text-decoration-none">
+                        <a href="https://wa.me/6281228620442?text=Assalamu'alaikum%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT [ ]%20ingin%20menyampaikan%20pengaduan." target="_blank" class="text-secondary text-decoration-none">
                             <i class="fa-solid fa-bullhorn me-1 text-warning"></i> Lapor / Pengaduan
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalPanduan" class="text-secondary text-decoration-none">
-                            <i class="fa-solid fa-circle-info me-1 text-warning"></i> Panduan Web
                         </a>
                     </li>
                 </ul>
@@ -378,10 +375,10 @@ $total_perempuan = mysqli_fetch_assoc($q_perempuan)['total'];
 
             <!-- Kolom 3: Kontak Darurat (Bisa Langsung Ditekan dari HP) -->
             <div class="col-6 col-md-4">
-                <h6 class="fw-bold mb-2 text-light small">Kontak Darurat RW</h6>
+                <h6 class="fw-bold mb-2 text-light small">Kontak RT / RW dan Kontak Darurat</h6>
                 <ul class="list-unstyled small d-flex flex-column gap-1 mb-0">
                     <li>
-                        <a href="https://wa.me/6281228620442?text=Halo%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT []%20ingin..." target="_blank" class="text-secondary text-decoration-none">
+                        <a href="https://wa.me/6281228620442?text=Assalamu'alaikum%20Bapak%20Ketua%20RW%2003,%20saya%20[nama]%20dari%20RT [ ]%20ingin..." target="_blank" class="text-secondary text-decoration-none">
                             <i class="fa-brands fa-whatsapp me-1 text-success"></i> Ketua RW 03
                         </a>
                     </li>
@@ -417,8 +414,10 @@ $total_perempuan = mysqli_fetch_assoc($q_perempuan)['total'];
             </div>
             <div class="modal-body small">
                 <ol class="ps-3 mb-0">
-                    <li class="mb-2"><strong>Data Warga:</strong> Gunakan menu navigasi atas untuk melihat daftar warga terdaftar.</li>
-                    <li class="mb-2"><strong>Layanan Surat & Pengaduan:</strong> Klik menu di footer untuk langsung terhubung via WhatsApp Pengurus RW.</li>
+                    <li class="mb-2"><strong>Beranda:</strong> Halaman ini menampilkan ringkasan statistik kependudukan RW 03 Sambi.</li>
+                    <li class="mb-2"><strong>Garis Navigasi:</strong> Gunakan garis 3 di pojok kanan atas untuk mengakses Data Warga, Statistik, Kontak Pengurus, dan Login Admin.</li>
+                    <li class="mb-2"><strong>Layanan Surat & Pengaduan:</strong> Klik menu di footer / bawah untuk langsung terhubung via WhatsApp Pengurus RW.</li>
+                    <li class="mb-2"><strong>Kontak Ketua RT dan RW:</strong> Klik menu <em>Kontak Ketua RT</em> atau <em>Kontak Ketua RT</em> di footer / bawah untuk melihat daftar kontak Ketua RT 01 s/d 06 serta Ketua RW.</li>
                     <li><strong>Pengurus RW:</strong> Silakan klik menu <em>Login Pengurus</em> untuk masuk ke Dashboard Admin.</li>
                 </ol>
             </div>
@@ -444,7 +443,7 @@ $total_perempuan = mysqli_fetch_assoc($q_perempuan)['total'];
                 <div class="d-flex flex-column gap-2">
                     
                     <!-- RT 01 -->
-                    <a href="https://wa.me/6281234567801?text=Halo%20Bapak%20Ketua%20RT%2001%20saya%20[nama lengkap]%20ingin..." target="_blank" 
+                    <a href="https://wa.me/6281234567801?text=Assalamu'alaikum%20Bapak%20Ketua%20RT%2001%20saya%20[nama lengkap]%20ingin..." target="_blank" 
                        class="btn btn-white bg-white border rounded-3 p-2 text-start d-flex align-items-center justify-content-between shadow-sm hover-shadow">
                         <div class="d-flex align-items-center gap-2">
                             <span class="badge bg-success-subtle text-success fw-bold px-2 py-2 rounded-2">01</span>
@@ -457,7 +456,7 @@ $total_perempuan = mysqli_fetch_assoc($q_perempuan)['total'];
                     </a>
 
                     <!-- RT 02 -->
-                    <a href="https://wa.me/6281234567802?text=Halo%20Bapak%20Ketua%20RT%2002%20saya%20[nama lengkap]%20ingin..." target="_blank" 
+                    <a href="https://wa.me/6281234567802?text=Assalamu'alaikum%20Bapak%20Ketua%20RT%2002%20saya%20[nama lengkap]%20ingin..." target="_blank" 
                        class="btn btn-white bg-white border rounded-3 p-2 text-start d-flex align-items-center justify-content-between shadow-sm">
                         <div class="d-flex align-items-center gap-2">
                             <span class="badge bg-success-subtle text-success fw-bold px-2 py-2 rounded-2">02</span>
@@ -470,7 +469,7 @@ $total_perempuan = mysqli_fetch_assoc($q_perempuan)['total'];
                     </a>
 
                     <!-- RT 03 -->
-                    <a href="https://wa.me/6281234567803?text=Halo%20Bapak%20Ketua%20RT%2003%20saya%20[nama lengkap]%20ingin..." target="_blank" 
+                    <a href="https://wa.me/6281234567803?text=Assalamu'alaikum%20Bapak%20Ketua%20RT%2003%20saya%20[nama lengkap]%20ingin..." target="_blank" 
                        class="btn btn-white bg-white border rounded-3 p-2 text-start d-flex align-items-center justify-content-between shadow-sm">
                         <div class="d-flex align-items-center gap-2">
                             <span class="badge bg-success-subtle text-success fw-bold px-2 py-2 rounded-2">03</span>
@@ -483,7 +482,7 @@ $total_perempuan = mysqli_fetch_assoc($q_perempuan)['total'];
                     </a>
 
                     <!-- RT 04 -->
-                    <a href="https://wa.me/6281234567804?text=Halo%20Bapak%20Ketua%20RT%2004%20saya%20[nama lengkap]%20ingin..." target="_blank" 
+                    <a href="https://wa.me/6281234567804?text=Assalamu'alaikum%20Bapak%20Ketua%20RT%2004%20saya%20[nama lengkap]%20ingin..." target="_blank" 
                        class="btn btn-white bg-white border rounded-3 p-2 text-start d-flex align-items-center justify-content-between shadow-sm">
                         <div class="d-flex align-items-center gap-2">
                             <span class="badge bg-success-subtle text-success fw-bold px-2 py-2 rounded-2">04</span>
@@ -496,7 +495,7 @@ $total_perempuan = mysqli_fetch_assoc($q_perempuan)['total'];
                     </a>
 
                     <!-- RT 05 -->
-                    <a href="https://wa.me/6281234567805?text=Halo%20Bapak%20Ketua%20RT%2005%20saya%20[nama lengkap]%20ingin..." target="_blank" 
+                    <a href="https://wa.me/6281234567805?text=Assalamu'alaikum%20Bapak%20Ketua%20RT%2005%20saya%20[nama lengkap]%20ingin..." target="_blank" 
                        class="btn btn-white bg-white border rounded-3 p-2 text-start d-flex align-items-center justify-content-between shadow-sm">
                         <div class="d-flex align-items-center gap-2">
                             <span class="badge bg-success-subtle text-success fw-bold px-2 py-2 rounded-2">05</span>
@@ -509,7 +508,7 @@ $total_perempuan = mysqli_fetch_assoc($q_perempuan)['total'];
                     </a>
 
                     <!-- RT 06 -->
-                    <a href="https://wa.me/6281234567806?text=Halo%20Bapak%20Ketua%20RT%2006%20saya%20[nama lengkap]%20ingin..." target="_blank" 
+                    <a href="https://wa.me/6281234567806?text=Assalamu'alaikum%20Bapak%20Ketua%20RT%2006%20saya%20[nama lengkap]%20ingin..." target="_blank" 
                        class="btn btn-white bg-white border rounded-3 p-2 text-start d-flex align-items-center justify-content-between shadow-sm">
                         <div class="d-flex align-items-center gap-2">
                             <span class="badge bg-success-subtle text-success fw-bold px-2 py-2 rounded-2">06</span>

@@ -272,7 +272,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </form>
 
                 <div class="text-center mt-3">
-                    <p class="text-muted small mb-0" style="font-size: 0.8rem;">Lupa akun login? Hubungi <span class="fw-semibold text-dark">Hotline WA RW 03</span> untuk reset akses.</p>
+                    <p class="text-muted small mb-0" style="font-size: 0.8rem;">Lupa akun login? Hubungi <span class="fw-semibold text-dark">Admin Sistem di Bantuan</span> untuk reset akses.</p>
                 </div>
 
             </div>

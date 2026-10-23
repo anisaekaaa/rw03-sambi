@@ -25,9 +25,9 @@ if (isset($_SESSION['wilayah_rt']) && $_SESSION['wilayah_rt'] > 0) {
     }
 }
 
-// Ambil Daftar Kepala Keluarga untuk Pilihan "Tambah ke Anggota Keluarga mana"
+// Ambil Daftar Kepala Keluarga KHUSUS RT ADMIN yang diakses
 $where_kk = ($admin_rt > 0) ? "WHERE rt = $admin_rt AND status_keluarga = 'Kepala Keluarga'" : "WHERE status_keluarga = 'Kepala Keluarga'";
-$q_kepala_keluarga = mysqli_query($koneksi, "SELECT id, nama, rt, no_kk FROM warga WHERE status_keluarga = 'Kepala Keluarga' ORDER BY rt ASC, CAST(no_kk AS UNSIGNED) ASC");
+$q_kepala_keluarga = mysqli_query($koneksi, "SELECT id, nama, rt, no_kk FROM warga $where_kk ORDER BY CAST(no_kk AS UNSIGNED) ASC, nama ASC");
 
 $error_msg = '';
 
@@ -84,11 +84,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- TomSelect CSS (Untuk Dropdown Search) -->
+    <!-- TomSelect CSS (Dropdown Search) -->
     <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
     <!-- Icon Web -->
-    <link rel ="icon" type="image/png" href="image/tambahdata_icon.png">
+    <link rel="icon" type="image/png" href="image/tambahdata_icon.png">
 
     <style>
         body {
@@ -103,152 +102,159 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .glass-nav {
             background: rgba(15, 81, 50, 0.95);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .card-form {
             border: none;
-            border-radius: 20px;
+            border-radius: 16px;
             background: #ffffff;
-            box-shadow: 0 20px 40px -15px rgba(15, 81, 50, 0.08);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
             overflow: hidden;
         }
 
         .card-form-header {
-            background: linear-gradient(135deg, #15803d, #0f5132);
+            background: #0f5132;
             color: #ffffff;
-            padding: 1.5rem 2rem;
+            padding: 1.2rem 1.5rem;
         }
 
         .form-label {
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             font-weight: 600;
             color: #475569;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
         }
 
+        /* CUSTOM FORM INPUT & DROPDOWN ELEGAN HASIL PERBAIKAN */
         .form-control, .form-select {
-            border-radius: 10px;
-            padding: 0.65rem 0.9rem;
-            font-size: 0.875rem;
-            border: 1.5px solid #cbd5e1;
-            background-color: #f8fafc;
+            border-radius: 8px;
+            padding: 0.45rem 0.75rem;
+            font-size: 0.8125rem;
+            border: 1px solid #cbd5e1;
+            background-color: #ffffff;
+            color: #334155;
             transition: all 0.2s ease;
         }
 
+        .form-select {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%3c15803d' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+            background-repeat: no-repeat !important;
+            background-position: right 0.75rem center !important;
+            background-size: 12px 10px !important;
+            padding-right: 2.2rem !important;
+        }
+
         .form-control:focus, .form-select:focus {
-            background-color: #ffffff;
             border-color: #198754;
             box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.12);
         }
 
-        /* STYLING CUSTOM TOMSELECT BIAR HIJAU MODERN */
+        /* STYLING CUSTOM TOMSELECT BIAR ELEGAN DAN SELEMBUT BOOTSTRAP */
         .ts-control {
-            border-radius: 10px !important;
-            padding: 0.65rem 0.9rem !important;
-            border: 1.5px solid #198754 !important;
+            border-radius: 8px !important;
+            padding: 0.45rem 0.75rem !important;
+            border: 1px solid #198754 !important;
             background-color: #ffffff !important;
-            font-size: 0.875rem !important;
+            font-size: 0.8125rem !important;
+            min-height: unset !important;
         }
         .ts-dropdown {
-            border-radius: 12px !important;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+            border-radius: 10px !important;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1) !important;
             border: 1px solid #cbd5e1 !important;
-            overflow: hidden;
+            font-size: 0.8125rem !important;
         }
 
         .btn-hover-effect {
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
         }
         .btn-hover-effect:hover {
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
     </style>
 </head>
 <body>
 
     <!-- NAVBAR ADMIN -->
-    <nav class="navbar navbar-expand-lg navbar-dark glass-nav sticky-top shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark glass-nav sticky-top shadow-sm py-2">
         <div class="container">
-            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="admin_dashboard.php">
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2 style="font-size: 0.95rem;" href="admin_dashboard.php">
                 <i class="fa-solid fa-user-shield text-warning"></i> 
                 <span>PANEL ADMIN RW 03</span>
             </a>
-            <div class="ms-auto d-flex align-items-center gap-2">
-                <a href="admin_dashboard.php" class="btn btn-outline-light btn-sm rounded-pill px-3 fw-semibold">
-                    <i class="fa-solid fa-arrow-left me-1"></i> Kembali ke Dashboard
+            <div class="ms-auto d-flex align-items-center">
+                <!-- TOMBOL KEMBALI DIPERKECIL & RINGKAS -->
+                <a href="admin_dashboard.php" class="btn btn-outline-light btn-sm rounded-pill px-3 py-1 fw-semibold btn-hover-effect" style="font-size: 0.75rem;">
+                    <i class="fa-solid fa-arrow-left me-1"></i> Kembali
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- CONTENT FORM -->
-    <main class="py-4 py-md-5 my-auto">
-        <div class="container px-3" style="max-width: 840px;">
+    <!-- CONTENT FORM CLEAN & COMPACT -->
+    <main class="py-3 py-md-4 my-auto">
+        <div class="container px-3" style="max-width: 720px;">
             
-            <div class="card card-form" data-aos="zoom-in" data-aos-duration="500">
+            <div class="card card-form" data-aos="fade-up" data-aos-duration="400">
                 
-                <!-- HEADER FORM -->
+                <!-- HEADER FORM CLEAN -->
                 <div class="card-form-header d-flex align-items-center justify-content-between">
                     <div>
-                        <h5 class="fw-bold mb-1"><i class="fa-solid fa-user-plus text-warning me-2"></i>Tambah Data Warga Baru</h5>
-                        <p class="mb-0 text-white-50 small">Lengkapi formulir di bawah ini untuk menambahkan warga terdaftar baru.</p>
+                        <h6 class="fw-bold mb-0 text-white d-flex align-items-center gap-2">
+                            <i class="fa-solid fa-user-plus text-warning"></i>
+                            <span>Tambah Data Warga Baru</span>
+                        </h6>
                     </div>
                 </div>
 
                 <!-- BODY FORM -->
-                <div class="card-body p-4 p-md-5">
+                <div class="card-body p-3 p-md-4">
 
                     <?php if (!empty($error_msg)): ?>
-                        <div class="alert alert-danger alert-dismissible fade show border-0 rounded-3 py-2 px-3 mb-4 small" role="alert">
-                            <i class="fa-solid fa-circle-exclamation me-2"></i> <?= $error_msg; ?>
+                        <div class="alert alert-danger alert-dismissible fade show border-0 rounded-3 py-1-5 px-3 mb-3 small" role="alert" style="font-size: 0.78rem;">
+                            <i class="fa-solid fa-circle-exclamation me-1"></i> <?= $error_msg; ?>
                             <button type="button" class="btn-close py-2" data-bs-dismiss="alert"></button>
                         </div>
                     <?php endif; ?>
 
                     <form action="warga_tambah.php" method="POST" autocomplete="off">
                         
-<!-- PILIH KELUARGA INDUK (SEARCHABLE DROPDOWN) -->
-<div class="mb-4 p-3 rounded-3 bg-light border">
-    <label for="pilih_kk" class="form-label text-success fw-bold">
-        <i class="fa-solid fa-users me-1"></i> Sambungkan Dengan Kepala Keluarga:
-    </label>
-    <select id="pilih_kk" placeholder="Cari nama Kepala Keluarga..." autocomplete="off">
-        <option value="">-- Pertahankan No. KK Saat Ini / Kepala Keluarga Sendiri --</option>
-        <?php 
-        if ($q_kepala_keluarga && mysqli_num_rows($q_kepala_keluarga) > 0):
-            while($kk = mysqli_fetch_assoc($q_kepala_keluarga)):
-        ?>
-            <option value="<?= $kk['id']; ?>" data-nokk="<?= htmlspecialchars($kk['no_kk']); ?>" data-rt="<?= $kk['rt']; ?>">
-                <?= htmlspecialchars($kk['nama']); ?> (RT 0<?= $kk['rt']; ?> - No. KK: <?= !empty($kk['no_kk']) ? htmlspecialchars($kk['no_kk']) : '-'; ?>)
-            </option>
-        <?php 
-            endwhile;
-        endif; 
-        ?>
-    </select>
-    <small class="text-muted d-block mt-1" style="font-size: 0.75rem;">
-        *Gunakan ini jika ingin menghubungkan/mengurutkan data warga ini di bawah Kepala Keluarga tertentu.
-    </small>
-</div>
+                        <!-- PILIH KELUARGA INDUK (SEARCHABLE DROPDOWN KHUSUS RT ADMIN) -->
+                        <div class="mb-3 p-2-5 rounded-3 bg-light border border-success border-opacity-25">
+                            <label for="pilih_kk" class="form-label text-success fw-bold">
+                                <i class="fa-solid fa-users me-1"></i> Sambungkan Dengan Kepala Keluarga:
+                            </label>
+                            <select id="pilih_kk" placeholder="Cari nama Kepala Keluarga..." autocomplete="off">
+                                <option value="">-- Pertahankan No. KK Saat Ini / Kepala Keluarga Sendiri --</option>
+                                <?php 
+                                if ($q_kepala_keluarga && mysqli_num_rows($q_kepala_keluarga) > 0):
+                                    while($kk = mysqli_fetch_assoc($q_kepala_keluarga)):
+                                ?>
+                                    <option value="<?= $kk['id']; ?>" data-nokk="<?= htmlspecialchars($kk['no_kk']); ?>" data-rt="<?= $kk['rt']; ?>">
+                                        <?= htmlspecialchars($kk['nama']); ?> (RT 0<?= $kk['rt']; ?> - No. KK: <?= !empty($kk['no_kk']) ? htmlspecialchars($kk['no_kk']) : '-'; ?>)
+                                    </option>
+                                <?php 
+                                    endwhile;
+                                endif; 
+                                ?>
+                            </select>
+                        </div>
 
-                        <!-- BARIS 1: NAMA LENGKAP & NO URUT KK -->
-                        <div class="row g-3 mb-3">
-                            <div class="col-md-9">
+                        <!-- BARIS 1: NAMA LENGKAP & NO KK -->
+                        <div class="row g-2 mb-2-5">
+                            <div class="col-md-7">
                                 <label for="nama" class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
                                 <input type="text" name="nama" id="nama" class="form-control" placeholder="Contoh: Budi Santoso" required autofocus>
                             </div>
-<div class="col-md-6 mb-3">
-    <label class="form-label fw-bold">No. KK / Kode Keluarga</label>
-    <input type="text" name="no_kk" class="form-control" placeholder="Contoh: 1, 2, atau 1.1 (untuk pecah KK)" value="<?= htmlspecialchars($w['no_kk'] ?? ''); ?>">
-    <div class="form-text text-muted" style="font-size: 0.8rem;">
-        *Gunakan nomor/kode yang sama untuk anggota dalam satu keluarga.
-    </div>
-</div>
+                            <div class="col-md-5">
+                                <label for="no_kk" class="form-label">No. KK / Kode Keluarga</label>
+                                <input type="text" name="no_kk" id="no_kk" class="form-control" placeholder="Contoh: 1, 2, atau 1.1">
+                            </div>
+                        </div>
 
                         <!-- BARIS 2: STATUS KELUARGA & STATUS PERKAWINAN -->
-                        <div class="row g-3 mb-3">
+                        <div class="row g-2 mb-2-5">
                             <div class="col-md-6">
                                 <label for="status_keluarga" class="form-label">Status Hubungan Keluarga</label>
                                 <select name="status_keluarga" id="status_keluarga" class="form-select">
@@ -259,9 +265,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <option value="Mertua">Mertua</option>
                                     <option value="Orang Tua">Orang Tua</option>
                                     <option value="Famili Lain">Famili Lain</option>
-                                    <option value="Kepala Keluarga (Meninggal)">Kepala Keluarga (Meninggal)</option>
-                                    <option value="Istri (Meninggal)">Istri (Meninggal)</option>
-                                    <option value="Anak (Meninggal)">Anak (Meninggal)</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
@@ -275,8 +278,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
                         </div>
 
-                        <!-- BARIS 3: JENIS KELAMIN, KALENDER TANGGAL LAHIR, & USIA AUTO -->
-                        <div class="row g-3 mb-3">
+                        <!-- BARIS 3: JENIS KELAMIN, TANGGAL LAHIR, & USIA -->
+                        <div class="row g-2 mb-2-5">
                             <div class="col-md-4">
                                 <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
                                 <select name="jenis_kelamin" id="jenis_kelamin" class="form-select">
@@ -289,53 +292,53 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <input type="date" name="tgl_lahir" id="tgl_lahir" class="form-control" onchange="hitungUsiaOtomatis()">
                             </div>
                             <div class="col-md-3">
-                                <label for="usia" class="form-label">Usia (Tahun)</label>
-                                <input type="number" name="usia" id="usia" class="form-control" placeholder="Otomatis" readonly style="background-color: #e2e8f0;">
+                                <label for="usia" class="form-label">Usia (Th)</label>
+                                <input type="number" name="usia" id="usia" class="form-control bg-light" placeholder="Otomatis" readonly>
                             </div>
                         </div>
 
                         <!-- BARIS 4: PENDIDIKAN & PEKERJAAN -->
-                        <div class="row g-3 mb-3">
+                        <div class="row g-2 mb-2-5">
                             <div class="col-md-6">
                                 <label for="pendidikan" class="form-label">Pendidikan Terakhir</label>
                                 <input type="text" name="pendidikan" id="pendidikan" class="form-control" placeholder="Contoh: SMA / SD / Belum Sekolah">
                             </div>
                             <div class="col-md-6">
                                 <label for="pekerjaan" class="form-label">Pekerjaan</label>
-                                <input type="text" name="pekerjaan" id="pekerjaan" class="form-control" placeholder="Contoh: Belum Bekerja / Pelajar / Buruh">
+                                <input type="text" name="pekerjaan" id="pekerjaan" class="form-control" placeholder="Contoh: Pelajar / Buruh">
                             </div>
                         </div>
 
                         <!-- BARIS 5: PROFESI & RT -->
-                        <div class="row g-3 mb-3">
+                        <div class="row g-2 mb-2-5">
                             <div class="col-md-8">
                                 <label for="profesi" class="form-label">Profesi / Detail Pekerjaan</label>
-                                <input type="text" name="profesi" id="profesi" class="form-control" placeholder="Contoh: Pelajar/Mahasiswa">
+                                <input type="text" name="profesi" id="profesi" class="form-control" placeholder="Opsional (misal: Swasta / Pelajar)">
                             </div>
                             <div class="col-md-4">
                                 <label for="rt" class="form-label">Wilayah RT <span class="text-danger">*</span></label>
                                 <select name="rt" id="rt" class="form-select" required>
                                     <?php for($i=1; $i<=6; $i++): ?>
-                                        <option value="<?= $i; ?>" <?= ($admin_rt == $i) ? 'selected' : ''; ?>>RT 0<?= $i; ?></option>
+                                        <option value="<?= $i; ?>" <?= ($admin_rt == $i || ($admin_rt == 0 && $i == 1)) ? 'selected' : ''; ?>>RT 0<?= $i; ?></option>
                                     <?php endfor; ?>
                                 </select>
                             </div>
                         </div>
 
                         <!-- BARIS 6: KETERANGAN TAMBAHAN -->
-                        <div class="mb-4">
+                        <div class="mb-3">
                             <label for="keterangan" class="form-label">Keterangan Tambahan</label>
                             <input type="text" name="keterangan" id="keterangan" class="form-control" placeholder="Opsional (misal: Anak Kandung, Pindahan, dll.)">
                         </div>
 
-                        <!-- TOMBOL SUBMIT -->
+                        <!-- TOMBOL SUBMIT DIPERKECIL & RAMPING -->
                         <div class="d-flex justify-content-end align-items-center gap-2 pt-2 border-top">
-                            <a href="admin_dashboard.php" class="btn btn-light rounded-pill px-4 fw-semibold text-secondary btn-hover-effect">
+                            <a href="admin_dashboard.php" class="btn btn-light btn-sm rounded-pill px-3 py-1-5 fw-semibold text-secondary btn-hover-effect" style="font-size: 0.78rem;">
                                 Batal
                             </a>
-                            <button type="submit" class="btn btn-success rounded-pill px-4 fw-bold shadow-sm btn-hover-effect d-inline-flex align-items-center gap-2">
-                                <i class="fa-solid fa-floppy-disk"></i>
-                                <span>Simpan Data Warga</span>
+                            <button type="submit" class="btn btn-success btn-sm rounded-pill px-3 py-1-5 fw-bold shadow-sm btn-hover-effect d-inline-flex align-items-center gap-1.5" style="font-size: 0.78rem;">
+                                <i class="fa-solid"></i>
+                                <span>Simpan Data</span>
                             </button>
                         </div>
 
@@ -347,24 +350,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-dark text-white mt-auto py-3 border-top border-secondary">
-        <div class="container text-center small text-secondary">
-            &copy; <?= date('Y'); ?> Panel Administrasi Pengurus RW 03 Desa Sambi. All Rights Reserved.
-        </div>
-    </footer>
-
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- AOS JS Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- TomSelect JS (Library Dropdown Searchable) -->
+    <!-- TomSelect JS -->
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script>
 
     <script>
-        AOS.init({ duration: 800, once: true });
+        AOS.init({ duration: 600, once: true });
 
-        // INISIALISASI TOMSELECT SEARCHBAR DROPDOWN
+        // INISIALISASI TOMSELECT SEARCHBAR DROPDOWN KEPALA KELUARGA
         const tomSelectKK = new TomSelect('#pilih_kk', {
             create: false,
             sortField: { field: "text", order: "asc" },
